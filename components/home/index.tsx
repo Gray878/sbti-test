@@ -1,5 +1,5 @@
-import Hero from "@/components/home/Hero";
+import SbtiExperience from "@/components/sbti/SbtiExperience";
 
 export default function HomeComponent() {
-  return <Hero />;
+  return <SbtiExperience />;
 }

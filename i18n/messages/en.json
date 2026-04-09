@@ -18,7 +18,7 @@
     ]
   },
   "Footer": {
-    "Copyright": "Copyright © {year} {name} All rights reserved.",
+    "Copyright": "© {year} {name} All rights reserved.",
     "PrivacyPolicy": "Privacy Policy",
     "TermsOfService": "Terms of Service",
     "Links": {
@@ -27,13 +27,13 @@
           "title": "Languages",
           "links": [
             {
-              "href": "/en",
-              "name": "English",
+              "href": "/",
+              "name": "中文",
               "useA": true
             },
             {
-              "href": "/zh",
-              "name": "中文",
+              "href": "/en",
+              "name": "English",
               "useA": true
             },
             {
@@ -60,20 +60,20 @@
     },
     "Newsletter": {
       "title": "Subscribe to our newsletter",
-      "description": "Get the latest news and updates from Next.js Starter",
+      "description": "Get updates when the SBTI site adds new content.",
       "defaultErrorMessage": "Please enter a valid email address",
       "successMessage": "Subscription successful",
       "errorMessage": "Subscription failed",
       "errorMessage2": "Subscription failed. Please try again later.",
       "subscribe": "Subscribe",
       "subscribing": "Subscribing...",
-      "subscribed": "Subscription successful! Thank you for your attention."
+      "subscribed": "Subscription successful. Thank you for your attention."
     }
   },
   "Home": {
     "title": "SBTI",
-    "tagLine": "Multilingual Content Site",
-    "description": "A multilingual site for SBTI tests, result notes, and related articles, with the blog and language infrastructure kept in place for future expansion.",
+    "tagLine": "Personality Test",
+    "description": "A recreated SBTI personality test using the crawled question set, scoring logic, and result posters.",
     "blogCta": "Browse blog"
   },
   "Blog": {
@@ -94,19 +94,19 @@
   },
   "Showcase": {
     "title": "Built with This Starter",
-    "description": "Discover amazing products and websites built using this Next.js starter template.",
+    "description": "Discover products and websites built using this Next.js starter template.",
     "visitSite": "Visit site"
   },
   "Submission": {
     "badge": "Get Featured",
     "title": "Submit Your Product",
-    "description": "Built something awesome with this starter? Share your product with our community and get featured on our showcase.",
+    "description": "Built something with this starter? Share your product with the community.",
     "productNameLabel": "Product Name",
     "productNamePlaceholder": "My Awesome Project",
     "productUrlLabel": "Product URL",
     "submit": "Submit Product",
     "submitting": "Submitting...",
-    "successMessage": "Thank you! Your submission has been received. We'll review it shortly.",
+    "successMessage": "Thank you. Your submission has been received.",
     "errorMessage": "Something went wrong. Please try again."
   }
 }

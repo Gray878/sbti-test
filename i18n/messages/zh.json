@@ -1,7 +1,7 @@
 {
   "LanguageDetection": {
     "title": "语言建议",
-    "description": "检测到你的浏览器语言和当前语言不一样，你随时都可切换语言。",
+    "description": "检测到你的浏览器语言和当前站点语言不同，你可以随时切换语言。",
     "countdown": "将在 {countdown} 秒后关闭",
     "switchTo": "切换到"
   },
@@ -18,7 +18,7 @@
     ]
   },
   "Footer": {
-    "Copyright": "版权所有 © {year} {name} 保留所有权利。",
+    "Copyright": "© {year} {name} 保留所有权利。",
     "PrivacyPolicy": "隐私政策",
     "TermsOfService": "服务条款",
     "Links": {
@@ -27,13 +27,13 @@
           "title": "语言",
           "links": [
             {
-              "href": "/en",
-              "name": "English",
+              "href": "/",
+              "name": "中文",
               "useA": true
             },
             {
-              "href": "/zh",
-              "name": "中文",
+              "href": "/en",
+              "name": "English",
               "useA": true
             },
             {
@@ -60,20 +60,20 @@
     },
     "Newsletter": {
       "title": "订阅我们的邮件",
-      "description": "获取最新的 Next.js 资讯和教程",
+      "description": "获取站点更新和后续内容整理。",
       "defaultErrorMessage": "请输入有效的邮箱地址",
       "successMessage": "订阅成功",
       "errorMessage": "订阅失败",
       "errorMessage2": "订阅失败，请稍后再试",
       "subscribe": "订阅",
-      "subscribing": "订阅中",
-      "subscribed": "订阅成功！感谢您的关注。"
+      "subscribing": "订阅中...",
+      "subscribed": "订阅成功，感谢关注。"
     }
   },
   "Home": {
     "title": "SBTI",
-    "tagLine": "多语言内容站点",
-    "description": "围绕 SBTI 测试、结果解读与相关内容整理，保留博客与多语言等基础结构，方便后续继续扩展。",
+    "tagLine": "人格测试",
+    "description": "高仿迁移自原站的 SBTI 人格测试，保留原题库、隐藏题、结果海报与基础 SEO 结构。",
     "blogCta": "查看博客"
   },
   "Blog": {
@@ -82,7 +82,7 @@
   },
   "About": {
     "title": "关于",
-    "description": "关于网站"
+    "description": "关于这个站点"
   },
   "TermsOfService": {
     "title": "服务条款",
@@ -93,20 +93,20 @@
     "description": "隐私政策"
   },
   "Showcase": {
-    "title": "使用案例展示",
-    "description": "探索使用本 Next.js 启动模板构建的优秀产品和网站。",
-    "visitSite": "访问网站"
+    "title": "案例展示",
+    "description": "查看基于这套模板搭建的产品和网站。",
+    "visitSite": "访问站点"
   },
   "Submission": {
-    "badge": "获得展示",
-    "title": "提交您的产品",
-    "description": "用这套模板构建了出色的产品？与我们的社区分享您的作品，并在展示区获得曝光。",
+    "badge": "申请展示",
+    "title": "提交你的产品",
+    "description": "如果你也用这套模板做了作品，可以在这里提交给我们。",
     "productNameLabel": "产品名称",
-    "productNamePlaceholder": "我的优秀项目",
+    "productNamePlaceholder": "我的项目",
     "productUrlLabel": "产品链接",
     "submit": "提交产品",
     "submitting": "提交中...",
-    "successMessage": "感谢您的提交！我们会尽快审核。",
+    "successMessage": "感谢提交，我们会尽快审核。",
     "errorMessage": "出了点问题，请重试。"
   }
 }
