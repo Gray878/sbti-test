@@ -14,18 +14,6 @@
       {
         "name": "About",
         "href": "/about"
-      },
-      {
-        "name": "Source Code",
-        "href": "https://github.com/weijunext/nextjs-starter",
-        "target": "_blank",
-        "rel": "noopener noreferrer nofollow"
-      },
-      {
-        "name": "Pro Version",
-        "href": "https://nexty.dev",
-        "target": "_blank",
-        "rel": "noopener noreferrer"
       }
     ]
   },
@@ -56,42 +44,15 @@
           ]
         },
         {
-          "title": "Open Source",
+          "title": "Site",
           "links": [
             {
-              "href": "https://github.com/weijunext/nextjs-starter",
-              "name": "Next.js Starter",
-              "rel": "noopener noreferrer nofollow",
-              "target": "_blank"
+              "href": "/blog",
+              "name": "Blog"
             },
             {
-              "href": "https://github.com/weijunext/landing-page-boilerplate",
-              "name": "Landing Page Boilerplate",
-              "rel": "noopener noreferrer nofollow",
-              "target": "_blank"
-            },
-            {
-              "href": "https://github.com/weijunext/weekly-boilerplate",
-              "name": "Blog Boilerplate",
-              "rel": "noopener noreferrer nofollow",
-              "target": "_blank"
-            }
-          ]
-        },
-        {
-          "title": "Other Products",
-          "links": [
-            {
-              "href": "https://nexty.dev/",
-              "name": "Nexty - SaaS Template",
-              "rel": "noopener noreferrer",
-              "target": "_blank"
-            },
-            {
-              "href": "https://myogimage.com/",
-              "name": "OG Image Generator",
-              "rel": "noopener noreferrer",
-              "target": "_blank"
+              "href": "/about",
+              "name": "About"
             }
           ]
         }
@@ -110,9 +71,10 @@
     }
   },
   "Home": {
-    "title": "Next.js Starter",
-    "tagLine": "Multilingual Next.js 16 Starter",
-    "description": "A multilingual Next.js 16 starter with built-in i18n support. Launch your global-ready web application with a clean, efficient, and SEO-friendly foundation."
+    "title": "SBTI",
+    "tagLine": "Multilingual Content Site",
+    "description": "A multilingual site for SBTI tests, result notes, and related articles, with the blog and language infrastructure kept in place for future expansion.",
+    "blogCta": "Browse blog"
   },
   "Blog": {
     "title": "Blog Posts",

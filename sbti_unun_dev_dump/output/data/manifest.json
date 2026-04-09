@@ -1,0 +1,158 @@
+{
+  "target_url": "https://sbti.unun.dev/",
+  "saved_files": {
+    "index_html": "site\\index.html",
+    "robots_txt": "site\\robots.txt",
+    "robots_raw_txt": "site\\robots_raw.txt",
+    "inline_css": "source\\inline.css",
+    "app_js": "source\\app.js",
+    "data_json": "data\\sbti_data.json"
+  },
+  "summary": {
+    "styles": 1,
+    "inline_scripts": 1,
+    "questions": 30,
+    "special_questions": 2,
+    "types": 27,
+    "normal_types": 25,
+    "dimensions": 15,
+    "images_downloaded": 27
+  },
+  "images": [
+    {
+      "code": "IMSB",
+      "source": "https://sbti.unun.dev/image/IMSB.png",
+      "saved_as": "images\\IMSB.png"
+    },
+    {
+      "code": "BOSS",
+      "source": "https://sbti.unun.dev/image/BOSS.png",
+      "saved_as": "images\\BOSS.png"
+    },
+    {
+      "code": "MUM",
+      "source": "https://sbti.unun.dev/image/MUM.png",
+      "saved_as": "images\\MUM.png"
+    },
+    {
+      "code": "FAKE",
+      "source": "https://sbti.unun.dev/image/FAKE.png",
+      "saved_as": "images\\FAKE.png"
+    },
+    {
+      "code": "Dior-s",
+      "source": "https://sbti.unun.dev/image/Dior-s.jpg",
+      "saved_as": "images\\Dior-s.jpg"
+    },
+    {
+      "code": "DEAD",
+      "source": "https://sbti.unun.dev/image/DEAD.png",
+      "saved_as": "images\\DEAD.png"
+    },
+    {
+      "code": "ZZZZ",
+      "source": "https://sbti.unun.dev/image/ZZZZ.png",
+      "saved_as": "images\\ZZZZ.png"
+    },
+    {
+      "code": "GOGO",
+      "source": "https://sbti.unun.dev/image/GOGO.png",
+      "saved_as": "images\\GOGO.png"
+    },
+    {
+      "code": "FUCK",
+      "source": "https://sbti.unun.dev/image/FUCK.png",
+      "saved_as": "images\\FUCK.png"
+    },
+    {
+      "code": "CTRL",
+      "source": "https://sbti.unun.dev/image/CTRL.png",
+      "saved_as": "images\\CTRL.png"
+    },
+    {
+      "code": "HHHH",
+      "source": "https://sbti.unun.dev/image/HHHH.png",
+      "saved_as": "images\\HHHH.png"
+    },
+    {
+      "code": "SEXY",
+      "source": "https://sbti.unun.dev/image/SEXY.png",
+      "saved_as": "images\\SEXY.png"
+    },
+    {
+      "code": "OJBK",
+      "source": "https://sbti.unun.dev/image/OJBK.png",
+      "saved_as": "images\\OJBK.png"
+    },
+    {
+      "code": "JOKE-R",
+      "source": "https://sbti.unun.dev/image/JOKE-R.jpg",
+      "saved_as": "images\\JOKE-R.jpg"
+    },
+    {
+      "code": "POOR",
+      "source": "https://sbti.unun.dev/image/POOR.png",
+      "saved_as": "images\\POOR.png"
+    },
+    {
+      "code": "OH-NO",
+      "source": "https://sbti.unun.dev/image/OH-NO.png",
+      "saved_as": "images\\OH-NO.png"
+    },
+    {
+      "code": "MONK",
+      "source": "https://sbti.unun.dev/image/MONK.png",
+      "saved_as": "images\\MONK.png"
+    },
+    {
+      "code": "SHIT",
+      "source": "https://sbti.unun.dev/image/SHIT.png",
+      "saved_as": "images\\SHIT.png"
+    },
+    {
+      "code": "THAN-K",
+      "source": "https://sbti.unun.dev/image/THAN-K.png",
+      "saved_as": "images\\THAN-K.png"
+    },
+    {
+      "code": "MALO",
+      "source": "https://sbti.unun.dev/image/MALO.png",
+      "saved_as": "images\\MALO.png"
+    },
+    {
+      "code": "ATM-er",
+      "source": "https://sbti.unun.dev/image/ATM-er.png",
+      "saved_as": "images\\ATM-er.png"
+    },
+    {
+      "code": "THIN-K",
+      "source": "https://sbti.unun.dev/image/THIN-K.png",
+      "saved_as": "images\\THIN-K.png"
+    },
+    {
+      "code": "SOLO",
+      "source": "https://sbti.unun.dev/image/SOLO.png",
+      "saved_as": "images\\SOLO.png"
+    },
+    {
+      "code": "LOVE-R",
+      "source": "https://sbti.unun.dev/image/LOVE-R.png",
+      "saved_as": "images\\LOVE-R.png"
+    },
+    {
+      "code": "WOC!",
+      "source": "https://sbti.unun.dev/image/WOC.png",
+      "saved_as": "images\\WOC.png"
+    },
+    {
+      "code": "DRUNK",
+      "source": "https://sbti.unun.dev/image/DRUNK.png",
+      "saved_as": "images\\DRUNK.png"
+    },
+    {
+      "code": "IMFW",
+      "source": "https://sbti.unun.dev/image/IMFW.png",
+      "saved_as": "images\\IMFW.png"
+    }
+  ]
+}
