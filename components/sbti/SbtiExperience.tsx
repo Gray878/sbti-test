@@ -186,11 +186,6 @@ export default function SbtiExperience() {
                   </details>
                 </div>
               </div>
-
-              <div className={cn(styles.card, styles.contentCard)}>
-                <h2>{t("intro.author.title")}</h2>
-                <p>{t("intro.author.content")}</p>
-              </div>
             </section>
           </>
         )}

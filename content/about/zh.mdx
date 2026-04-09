@@ -1,99 +1,45 @@
 ---
 title: 关于
-description: 关于 Next.js Starter 多语言启动模板
-lastUpdated: 2025-02-19
+description: 关于 SBTI 人格测试
+lastUpdated: 2025-04-10
 ---
 
-> 更新日期：2025-02-19
+# 关于 SBTI 人格测试
 
-# 关于 Next.js Starter
+SBTI 是一套基于 15 个维度的娱乐化人格测试，包含 30 道常规题和 2 道特殊题，结果库共有 27 种人格类型。与传统 MBTI 不同，SBTI 采用中文互联网语感的命名方式，更贴近年轻人的表达习惯。
 
-Next.js Starter 是一个功能完备的 Next.js 16 多语言启动模板，旨在帮助开发者快速构建面向全球的网站。它内置了多语言支持、现代 UI 设计、深色/浅色主题切换、响应式布局、MDX 博客系统、SEO 优化以及多种统计分析工具。
+## 测试特点
 
-## ✨ 主要特性
+- **15 个核心维度**：涵盖自我、情感、态度、行动、社交等多个层面
+- **27 种人格类型**：从 CTRL（拿捏者）到 DEAD（死者），每种人格都有独特的性格特征
+- **隐藏机制**：包含特殊触发的隐藏人格 DRUNK 和系统兜底人格 HHHH
+- **视觉化结果**：每种人格都配有专属海报和详细解读
+- **娱乐导向**：采用网络梗文化和黑话命名，记忆点强，易于传播
 
-- 🌐 **多语言支持**：内置中文、英文、日语的国际化支持，轻松实现多语言网站。
-- 🎨 **现代 UI 设计**：基于 Tailwind CSS 的现代 UI 设计，简洁美观。
-- 🌙 **深色/浅色主题切换**：支持用户自由切换深色和浅色主题。
-- 📱 **响应式布局**：适配各种设备，确保在移动端和桌面端都有良好的用户体验。
-- 📝 **MDX 博客系统**：支持使用 MDX 编写博客文章，灵活且强大。
-- 🔍 **SEO 优化**：内置完整的 SEO 优化方案，包括自动生成 sitemap.xml 和 robots.txt。
-- 📊 **统计分析**：集成 Google Analytics、Baidu Analytics、Google Adsense 和 Vercel Analytics，方便进行数据追踪。
-- 🌿 **环保性能**：在 [Website Carbon](https://www.websitecarbon.com/website/nextjsstarter-io/) 上获得 A+ 评级，成为最节能的网站之一。
+## 关于测试作者
 
-## 🚀 快速开始
+本测试首发于 B 站 UP 主蛆肉儿串儿（UID 417038183），初衷是劝诫一位爱喝酒的朋友戒酒。
 
-1. 克隆项目：
-    ```bash
-    git clone https://github.com/weijunext/nextjs-starter.git
-    ```
+作者自述人格为 SHIT（愤世者），因此在测试中"平等地攻击了各位"。测试以娱乐为主，作者也表示无法完美平衡娱乐性和专业性，部分人格阐释可能模糊或不准确。
 
-2. 安装依赖：
-    ```bash
-    npm install
-    ```
+### 作者的话
 
-3. 复制环境变量文件：
-    ```bash
-    cp .env.example .env
-    ```
+> 本测试首发于 b 站 up 主蛆肉儿串儿（UID417038183），初衷是劝诫一位爱喝酒的朋友戒酒。
+>
+> 由于作者的人格是 SHIT 愤世者，所以平等地攻击了各位，在此抱歉。不过我是一个绝世大美女，你们一定会原谅我，有 B 站的朋友们也可以关注我。
+>
+> 关于这个测试，我没法很好地平衡娱乐和专业性，因此对于一些人格的阐释较为模糊或完全不准，如有冒犯非常抱歉。
+>
+> 再鉴于时间精力有限，就先这样玩玩，后续会慢慢完善修改。总之好玩为主，还请不要用于盈利呀。
 
-4. 启动开发服务器：
-    ```bash
-    npm run dev
-    ```
+## 免责声明
 
-访问 [http://localhost:3000](http://localhost:3000) 查看你的应用。
+本测试仅供娱乐，别拿它当诊断、面试、相亲、分手、招魂、算命或人生判决书。你可以笑，但别太当真。
 
-## ⚙️ 配置
+SBTI 是娱乐性测试，不具备专业心理测评的严谨性和准确性。它更像是一面有趣的镜子，用夸张的方式反映某些性格侧面。请不要将结果用于医学诊断、职业规划、人际判断等严肃场景。
 
-1. **基础配置**：
-    - 修改 `config/site.ts` 配置网站信息。
-    - 更新 `public/` 下的图标和 logo。
-    - 配置 `app/sitemap.ts` 和 `app/robots.ts`。
+## 关于本站
 
-2. **多语言配置**：
-    - 在 `i18n/messages/` 下添加或修改语言文件。
-    - 在 `i18n/routing.ts` 中配置支持的语言。
-    - 在 `middleware.ts` 中配置多语言路由。
+本站是 SBTI 测试的高仿迁移版本，保留了原题库、隐藏题、结果海报与基础 SEO 结构，旨在为更多用户提供便捷的测试体验。
 
-## 📝 内容管理
-
-### 博客文章
-在 `blog/[locale]` 目录下创建 MDX 文件，支持以下格式：
-```markdown
----
-title: 文章标题
-description: 文章描述
-image: /image.png
-slug: /url-path
-tags: tag1,tag2
-date: 2025-02-20
-visible: published
-pin: true
----
-
-文章内容...
-```
-
-### 静态页面
-在 `content/[page]/[locale].mdx` 下管理静态页面内容。
-
-## 📄 许可证
-
-Next.js Starter 采用 MIT 许可证，您可以自由使用、修改和分发。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request！您的贡献将帮助我们不断改进这个项目。
-
-## 关于作者
-
-专注于 Next.js 全栈开发，欢迎探讨开发、咨询与培训等合作机会，联系微信：bigye_chengpu
-
-- [Github](https://github.com/weijunext)
-- [Twitter/X](https://twitter.com/weijunext)
-- [博客 - J实验室](https://weijunext.com)
-- [Medium](https://medium.com/@weijunext)
-- [掘金](https://juejin.cn/user/26044008768029)
-- [知乎](https://www.zhihu.com/people/mo-mo-mo-89-12-11)
+如有任何问题或建议，欢迎通过以下方式联系我们。
