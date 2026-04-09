@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import StructuredData from "@/components/StructuredData";
 import {
   AnswerMap,
   ComputedSbtiResult,
@@ -10,37 +10,51 @@ import {
   getVisibleQuestions,
   sbtiData,
 } from "@/lib/sbti";
+import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import styles from "./SbtiExperience.module.css";
 
 type Screen = "intro" | "test" | "result";
 
 const OPTION_CODES = ["A", "B", "C", "D"];
-const FUN_NOTE =
-  "本测试仅供娱乐，别拿它当诊断、面试、相亲、分手、招魂、算命或人生判决书。你可以笑，但别太当真。";
-const SPECIAL_FUN_NOTE =
-  "本测试仅供娱乐。隐藏人格和强行兜底都属于作者故意埋的损招，请勿把它当成医学、心理学、相学、命理学或灵异学依据。";
-
-const AUTHOR_NOTES = [
-  "本测试首发于 b 站 up 主蛆肉儿串儿（UID417038183），初衷是劝诫一位爱喝酒的朋友戒酒。",
-  "由于作者的人格是 SHIT 愤世者，所以平等地攻击了各位，在此抱歉。不过我是一个绝世大美女，你们一定会原谅我，有 B 站的朋友们也可以关注我。",
-  "关于这个测试，我没法很好地平衡娱乐和专业性，因此对于一些人格的阐释较为模糊或完全不准，如有冒犯非常抱歉。",
-  "再鉴于时间精力有限，就先这样玩玩，后续会慢慢完善修改。总之好玩为主，还请不要用于盈利呀。",
-];
-
-function getQuestionMetaLabel(question: SbtiQuestion) {
-  if ("special" in question && question.special) {
-    return "补充题";
-  }
-
-  return "维度已隐藏";
-}
 
 export default function SbtiExperience() {
+  const t = useTranslations("SbtiTest");
   const [screen, setScreen] = useState<Screen>("intro");
   const [answers, setAnswers] = useState<AnswerMap>({});
   const [questionFlow, setQuestionFlow] = useState<SbtiQuestion[]>([]);
   const [result, setResult] = useState<ComputedSbtiResult | null>(null);
+
+  const faqData = [
+    {
+      question: t("faq.q1.question"),
+      answer: t("faq.q1.answer")
+    },
+    {
+      question: t("faq.q2.question"),
+      answer: t("faq.q2.answer")
+    },
+    {
+      question: t("faq.q3.question"),
+      answer: t("faq.q3.answer")
+    },
+    {
+      question: t("faq.q4.question"),
+      answer: t("faq.q4.answer")
+    },
+    {
+      question: t("faq.q5.question"),
+      answer: t("faq.q5.answer")
+    }
+  ];
+
+  function getQuestionMetaLabel(question: SbtiQuestion) {
+    if ("special" in question && question.special) {
+      return t("test.specialQuestion");
+    }
+    return t("test.dimensionHidden");
+  }
 
   const visibleQuestions = getVisibleQuestions(questionFlow, answers);
   const answeredCount = visibleQuestions.filter(
@@ -84,22 +98,101 @@ export default function SbtiExperience() {
 
   return (
     <div className={styles.page}>
+      {screen === "intro" && (
+        <StructuredData type="FAQ" data={faqData} />
+      )}
       <div className={styles.shell}>
         {screen === "intro" && (
-          <section id="sbti-home">
-            <div className={cn(styles.card, styles.hero, styles.heroMinimal)}>
-              <h1>MBTI已经过时，SBTI来了。</h1>
-              <div className={cn(styles.heroActions, styles.heroActionsSingle)}>
-                <button
-                  className={cn(styles.btn, styles.btnPrimary)}
-                  onClick={startTest}
-                  type="button"
-                >
-                  开始测试
-                </button>
+          <>
+            <section id="sbti-home">
+              <div className={cn(styles.card, styles.hero, styles.heroMinimal)}>
+                <h1>{t("hero.title")}</h1>
+                <div className={cn(styles.heroActions, styles.heroActionsSingle)}>
+                  <button
+                    className={cn(styles.btn, styles.btnPrimary)}
+                    onClick={startTest}
+                    type="button"
+                  >
+                    {t("hero.startButton")}
+                  </button>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+
+            <section className={styles.seoSection}>
+              <div className={cn(styles.card, styles.contentCard)}>
+                <h2>{t("intro.whatIs.title")}</h2>
+                <p>{t("intro.whatIs.p1")}</p>
+                <p>{t("intro.whatIs.p2")}</p>
+              </div>
+
+              <div className={cn(styles.card, styles.contentCard)}>
+                <h2>{t("intro.features.title")}</h2>
+                <ul className={styles.featureList}>
+                  <li>
+                    <strong>{t("intro.features.f1.title")}</strong>：{t("intro.features.f1.desc")}
+                  </li>
+                  <li>
+                    <strong>{t("intro.features.f2.title")}</strong>：{t("intro.features.f2.desc")}
+                  </li>
+                  <li>
+                    <strong>{t("intro.features.f3.title")}</strong>：{t("intro.features.f3.desc")}
+                  </li>
+                  <li>
+                    <strong>{t("intro.features.f4.title")}</strong>：{t("intro.features.f4.desc")}
+                  </li>
+                  <li>
+                    <strong>{t("intro.features.f5.title")}</strong>：{t("intro.features.f5.desc")}
+                  </li>
+                </ul>
+              </div>
+
+              <div className={cn(styles.card, styles.contentCard)}>
+                <h2>{t("faq.title")}</h2>
+                <div className={styles.faqList}>
+                  <details className={styles.faqItem}>
+                    <summary>{t("faq.q1.question")}</summary>
+                    <p>{t("faq.q1.answer")}</p>
+                  </details>
+
+                  <details className={styles.faqItem}>
+                    <summary>{t("faq.q2.question")}</summary>
+                    <p>{t("faq.q2.answer")}</p>
+                  </details>
+
+                  <details className={styles.faqItem}>
+                    <summary>{t("faq.q3.question")}</summary>
+                    <p>{t("faq.q3.answer")}</p>
+                  </details>
+
+                  <details className={styles.faqItem}>
+                    <summary>{t("faq.q4.question")}</summary>
+                    <p>{t("faq.q4.answer")}</p>
+                  </details>
+
+                  <details className={styles.faqItem}>
+                    <summary>{t("faq.q5.question")}</summary>
+                    <p>{t("faq.q5.answer")}</p>
+                  </details>
+
+                  <details className={styles.faqItem}>
+                    <summary>{t("faq.q6.question")}</summary>
+                    <p>{t("faq.q6.answer")}</p>
+                  </details>
+
+                  <details className={styles.faqItem}>
+                    <summary>{t("faq.q7.question")}</summary>
+                    <p>{t("faq.q7.answer")}</p>
+                  </details>
+                </div>
+              </div>
+
+              <div className={cn(styles.card, styles.contentCard)}>
+                <h2>{t("intro.author.title")}</h2>
+                <p>{t("intro.author.content")}</p>
+              </div>
+            </section>
+          </>
         )}
 
         {screen === "test" && (
@@ -127,7 +220,7 @@ export default function SbtiExperience() {
                     }}
                   >
                     <div className={styles.questionMeta}>
-                      <div className={styles.badge}>第 {questionIndex + 1} 题</div>
+                      <div className={styles.badge}>{t("test.questionNumber", { number: questionIndex + 1 })}</div>
                       <div>{getQuestionMetaLabel(question)}</div>
                     </div>
 
@@ -170,8 +263,8 @@ export default function SbtiExperience() {
               <div className={styles.actionsBottom}>
                 <div className={styles.hint}>
                   {canSubmit
-                    ? "都做完了。现在可以把你的电子魂魄交给结果页审判。"
-                    : "全选完才会放行。世界已经够乱了，起码把题做完整。"}
+                    ? t("test.hintComplete")
+                    : t("test.hintIncomplete")}
                 </div>
 
                 <div className={styles.actionGroup}>
@@ -180,7 +273,7 @@ export default function SbtiExperience() {
                     onClick={() => setScreen("intro")}
                     type="button"
                   >
-                    返回首页
+                    {t("test.backButton")}
                   </button>
                   <button
                     className={cn(styles.btn, styles.btnPrimary)}
@@ -188,7 +281,7 @@ export default function SbtiExperience() {
                     onClick={handleSubmit}
                     type="button"
                   >
-                    提交并查看结果
+                    {t("test.submitButton")}
                   </button>
                 </div>
               </div>
@@ -205,7 +298,7 @@ export default function SbtiExperience() {
                     className={cn(
                       styles.posterBox,
                       !sbtiData.typeImages[result.finalType.code] &&
-                        styles.posterBoxNoImage
+                      styles.posterBoxNoImage
                     )}
                   >
                     {sbtiData.typeImages[result.finalType.code] && (
@@ -232,12 +325,12 @@ export default function SbtiExperience() {
                 </div>
 
                 <div className={styles.analysisBox}>
-                  <h3>该人格的简单解读</h3>
+                  <h3>{t("result.analysisTitle")}</h3>
                   <p>{result.finalType.desc}</p>
                 </div>
 
                 <div className={styles.dimBox}>
-                  <h3>十五维度评分</h3>
+                  <h3>{t("result.dimensionsTitle")}</h3>
                   <div className={styles.dimList}>
                     {sbtiData.dimensionOrder.map((dimension) => (
                       <div className={styles.dimItem} key={dimension}>
@@ -246,13 +339,13 @@ export default function SbtiExperience() {
                             {sbtiData.dimensionMeta[dimension].name}
                           </div>
                           <div className={styles.dimItemScore}>
-                            {result.levels[dimension]} / {result.rawScores[dimension]}分
+                            {result.levels[dimension]} / {result.rawScores[dimension]}{t("result.scoreUnit")}
                           </div>
                         </div>
                         <p>
                           {
                             sbtiData.dimExplanations[dimension][
-                              result.levels[dimension]
+                            result.levels[dimension]
                             ]
                           }
                         </p>
@@ -262,15 +355,15 @@ export default function SbtiExperience() {
                 </div>
 
                 <div className={styles.noteBox}>
-                  <h3>友情提示</h3>
-                  <p>{result.special ? SPECIAL_FUN_NOTE : FUN_NOTE}</p>
+                  <h3>{t("result.noteTitle")}</h3>
+                  <p>{result.special ? t("result.specialNote") : t("result.funNote")}</p>
                 </div>
 
                 <details className={styles.authorBox}>
-                  <summary>作者的话</summary>
+                  <summary>{t("result.authorTitle")}</summary>
                   <div className={styles.authorContent}>
-                    {AUTHOR_NOTES.map((note) => (
-                      <p key={note}>{note}</p>
+                    {[1, 2, 3, 4].map((i) => (
+                      <p key={i}>{t(`result.authorNote${i}`)}</p>
                     ))}
                   </div>
                 </details>
@@ -283,14 +376,14 @@ export default function SbtiExperience() {
                     onClick={startTest}
                     type="button"
                   >
-                    重新测试
+                    {t("result.retestButton")}
                   </button>
                   <button
                     className={cn(styles.btn, styles.btnPrimary)}
                     onClick={() => setScreen("intro")}
                     type="button"
                   >
-                    回到首页
+                    {t("result.backButton")}
                   </button>
                 </div>
               </div>

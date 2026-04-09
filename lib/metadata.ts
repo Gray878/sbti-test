@@ -12,6 +12,7 @@ type MetadataProps = {
   locale: Locale
   path?: string
   canonicalUrl?: string
+  keywords?: string[]
 }
 
 export async function constructMetadata({
@@ -23,6 +24,7 @@ export async function constructMetadata({
   locale,
   path,
   canonicalUrl,
+  keywords = [],
 }: MetadataProps): Promise<Metadata> {
   // get translations
   const t = await getTranslations({ locale, namespace: 'Home' })
@@ -63,7 +65,7 @@ export async function constructMetadata({
   return {
     title: finalTitle,
     description: pageDescription,
-    keywords: [],
+    keywords: keywords,
     authors: siteConfig.authors,
     creator: siteConfig.creator,
     metadataBase: new URL(siteConfig.url),

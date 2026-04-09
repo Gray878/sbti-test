@@ -8,7 +8,7 @@
   "Header": {
     "links": [
       {
-        "name": "Blog",
+        "name": "Introduction",
         "href": "/blog"
       },
       {
@@ -71,10 +71,10 @@
     }
   },
   "Home": {
-    "title": "SBTI",
+    "title": "SBTI Personality Test",
     "tagLine": "Personality Test",
-    "description": "A recreated SBTI personality test using the crawled question set, scoring logic, and result posters.",
-    "blogCta": "Browse blog"
+    "description": "SBTI is an entertainment-focused personality test based on 15 dimensions, featuring 27 personality types (CTRL, BOSS, DRUNK, etc.). With internet-native Chinese naming, hidden personalities, and special mechanisms, complete the test in 5-10 minutes to get your exclusive personality poster and detailed analysis.",
+    "blogCta": "View Introduction"
   },
   "Blog": {
     "title": "Blog Posts",
@@ -108,5 +108,100 @@
     "submitting": "Submitting...",
     "successMessage": "Thank you. Your submission has been received.",
     "errorMessage": "Something went wrong. Please try again."
+  },
+  "SbtiTest": {
+    "hero": {
+      "title": "MBTI is outdated, SBTI is here.",
+      "startButton": "Start Test"
+    },
+    "intro": {
+      "whatIs": {
+        "title": "What is SBTI Personality Test?",
+        "p1": "SBTI is an entertainment-focused personality test based on 15 dimensions, featuring 30 regular questions and 2 special questions, with a total of 27 personality types. Unlike traditional MBTI, SBTI uses internet-native Chinese naming conventions, such as CTRL (Controller), BOSS (Leader), DRUNK (Drunkard), etc., which resonate more with younger generations.",
+        "p2": "The test includes hidden personality DRUNK (triggered by special questions) and fallback personality HHHH (assigned when standard personality matching is low), making the entire testing process full of fun and exploration."
+      },
+      "features": {
+        "title": "Features of SBTI Test",
+        "f1": {
+          "title": "15 Core Dimensions",
+          "desc": "Covering multiple aspects including self, emotion, attitude, action, and social interaction"
+        },
+        "f2": {
+          "title": "27 Personality Types",
+          "desc": "From CTRL (Controller) to DEAD (Dead), each personality has unique characteristics"
+        },
+        "f3": {
+          "title": "Hidden Mechanisms",
+          "desc": "Includes specially triggered hidden personalities and system fallback personalities"
+        },
+        "f4": {
+          "title": "Visual Results",
+          "desc": "Each personality comes with exclusive posters and detailed interpretations"
+        },
+        "f5": {
+          "title": "Entertainment-Oriented",
+          "desc": "Uses internet meme culture and slang naming, highly memorable and easy to spread"
+        }
+      },
+      "author": {
+        "title": "About the Test Author",
+        "content": "This test was first released by Bilibili UP master Qurouer Chuaner (UID 417038183), originally intended to persuade a friend who loves drinking to quit alcohol. The author describes their personality as SHIT (Cynic), so they 'equally attacked everyone' in the test. The test is mainly for entertainment, and the author admits they cannot perfectly balance entertainment and professionalism, so some personality interpretations may be vague or inaccurate."
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": {
+        "question": "How long does the SBTI test take?",
+        "answer": "It usually takes 5-10 minutes to complete. The test contains 30 regular questions and up to 2 special questions. It's recommended to answer based on your first instinct in a quiet environment without overthinking."
+      },
+      "q2": {
+        "question": "What's the difference between SBTI and MBTI?",
+        "answer": "MBTI is a professional personality test based on Jungian psychology theory, while SBTI is an entertainment-focused personality test. SBTI uses more down-to-earth Chinese internet language with more direct naming, focusing on entertainment and social sharing, and cannot be used as a professional psychological assessment."
+      },
+      "q3": {
+        "question": "What is the hidden personality DRUNK?",
+        "answer": "DRUNK (Drunkard) is an easter egg personality in the test that needs to be triggered through specific alcohol-related questions. It's not one of the 25 standard personalities but a special mechanism designed by the author to present the state of 'alcohol taking over the system' in an exaggerated way."
+      },
+      "q4": {
+        "question": "Why is my result HHHH (Silly Laugher)?",
+        "answer": "HHHH is the system's fallback personality. When your answer pattern differs significantly from the standard personality database and cannot be accurately classified, you'll be assigned this result. This indicates that your personality traits are quite unique and don't fit well with existing standard personality templates."
+      },
+      "q5": {
+        "question": "Is the SBTI test result accurate?",
+        "answer": "SBTI is an entertainment test and does not have the rigor and accuracy of professional psychological assessments. It's more like an interesting mirror that reflects certain personality aspects in an exaggerated way. Please do not use the results for medical diagnosis, career planning, interpersonal judgment, or other serious scenarios."
+      },
+      "q6": {
+        "question": "Can I retake the test?",
+        "answer": "Yes. However, it's recommended to wait a while before retesting, as short-term repeated testing is easily influenced by memory. Test results may vary at different times and in different moods, which is also part of the fun of personality tests."
+      },
+      "q7": {
+        "question": "What are the 27 personality types?",
+        "answer": "Including: CTRL (Controller), ATM-er (Money Sender), Dior-s (Loser), BOSS (Leader), THAN-K (Grateful), OH-NO (Oh-No Person), GOGO (Doer), SEXY (Charmer), LOVE-R (Romantic), MUM (Mom), FAKE (Faker), OJBK (Whatever Person), MALO (Minion), JOKE-R (Joker), WOC! (OMG Person), THIN-K (Thinker), SHIT (Cynic), ZZZZ (Dead Sleeper), POOR (Poor), MONK (Monk), IMSB (Fool), SOLO (Orphan), FUCK (Fucker), DEAD (Dead), IMFW (Waste), HHHH (Silly Laugher), DRUNK (Drunkard)."
+      }
+    },
+    "test": {
+      "questionNumber": "Question {number}",
+      "specialQuestion": "Supplementary Question",
+      "dimensionHidden": "Dimension Hidden",
+      "hintComplete": "All done. Now you can submit your digital soul for judgment on the results page.",
+      "hintIncomplete": "Complete all questions to proceed. The world is chaotic enough, at least finish the questions.",
+      "backButton": "Back to Home",
+      "submitButton": "Submit and View Results"
+    },
+    "result": {
+      "analysisTitle": "Simple Interpretation of This Personality",
+      "dimensionsTitle": "Fifteen Dimension Scores",
+      "scoreUnit": " pts",
+      "noteTitle": "Friendly Reminder",
+      "funNote": "This test is for entertainment only. Don't treat it as a diagnosis, interview, dating, breakup, séance, fortune-telling, or life verdict. You can laugh, but don't take it too seriously.",
+      "specialNote": "This test is for entertainment only. Hidden personalities and forced fallbacks are tricks deliberately planted by the author. Please do not use it as a basis for medicine, psychology, physiognomy, numerology, or paranormal studies.",
+      "authorTitle": "Author's Words",
+      "authorNote1": "This test was first released by Bilibili UP master Qurouer Chuaner (UID 417038183), originally intended to persuade a friend who loves drinking to quit alcohol.",
+      "authorNote2": "Since the author's personality is SHIT (Cynic), they equally attacked everyone, and apologize for that. But I'm a stunning beauty, so you'll definitely forgive me. Friends on Bilibili can also follow me.",
+      "authorNote3": "Regarding this test, I couldn't balance entertainment and professionalism well, so some personality interpretations are vague or completely inaccurate. I apologize if I offended anyone.",
+      "authorNote4": "Given limited time and energy, let's just play around for now, and I'll gradually improve and modify it later. In short, fun is the main goal, please don't use it for profit.",
+      "retestButton": "Retake Test",
+      "backButton": "Back to Home"
+    }
   }
 }

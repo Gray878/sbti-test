@@ -40,6 +40,12 @@ export async function generateMetadata({
     locale: locale as Locale,
     path: `/`,
     canonicalUrl: `/`,
+    keywords: [
+      "SBTI test",
+      "SBTI",
+      "人格测试",
+      "personality test",
+    ],
   });
 }
 
