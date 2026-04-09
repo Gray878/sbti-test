@@ -86,7 +86,7 @@ export default function SbtiExperience() {
     <div className={styles.page}>
       <div className={styles.shell}>
         {screen === "intro" && (
-          <section>
+          <section id="sbti-home">
             <div className={cn(styles.card, styles.hero, styles.heroMinimal)}>
               <h1>MBTI已经过时，SBTI来了。</h1>
               <div className={cn(styles.heroActions, styles.heroActionsSingle)}>

@@ -36,7 +36,7 @@
   z-index: 1;
   max-width: 980px;
   margin: 0 auto;
-  padding: 24px 16px 56px;
+  padding: 24px 16px 16px;
 }
 
 .card {
@@ -584,7 +584,7 @@
 
 @media (max-width: 600px) {
   .shell {
-    padding: 14px 12px 42px;
+    padding: 14px 12px 12px;
   }
 
   .hero,
