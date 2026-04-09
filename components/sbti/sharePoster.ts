@@ -269,32 +269,33 @@ export async function buildSbtiSharePoster(
   context.textAlign = "center";
   context.textBaseline = "middle";
   context.fillText("SBTI", contentX + 73, cursorY + 27);
+  context.font = `600 28px ${FONT_STACK}`;
+  context.fillStyle = "#5f7966";
+  context.textAlign = "left";
+  context.fillText(copy.posterTitle, contentX + 176, cursorY + 27);
+  context.font = `600 24px ${FONT_STACK}`;
+  context.fillStyle = "#6a786f";
+  context.textAlign = "right";
+  context.fillText(result.modeKicker, contentX + contentWidth, cursorY + 27);
   context.restore();
   cursorY += 88;
 
   context.save();
-  context.font = `600 30px ${FONT_STACK}`;
-  context.fillStyle = "#5f7966";
-  context.textBaseline = "top";
-  context.fillText(copy.posterTitle, contentX, cursorY);
-  context.restore();
-  cursorY += 54;
-
-  context.save();
-  context.font = `800 104px ${FONT_STACK}`;
+  context.font = `800 92px ${FONT_STACK}`;
   context.fillStyle = "#1e2a22";
   context.textBaseline = "top";
+  const codeWidth = context.measureText(result.finalType.code).width;
   context.fillText(result.finalType.code, contentX, cursorY);
-  context.restore();
-  cursorY += 126;
-
-  context.save();
-  context.font = `700 58px ${FONT_STACK}`;
+  context.font = `700 56px ${FONT_STACK}`;
   context.fillStyle = "#39513f";
-  context.textBaseline = "top";
-  context.fillText(result.finalType.cn, contentX, cursorY);
+  const cnWidth = context.measureText(result.finalType.cn).width;
+  const cnX = Math.min(
+    contentX + codeWidth + 28,
+    contentX + contentWidth - cnWidth
+  );
+  context.fillText(result.finalType.cn, cnX, cursorY + 22);
   context.restore();
-  cursorY += 88;
+  cursorY += 116;
 
   context.save();
   context.font = `700 28px ${FONT_STACK}`;
@@ -310,10 +311,21 @@ export async function buildSbtiSharePoster(
   context.textBaseline = "middle";
   context.fillText(result.badge, contentX + 24, cursorY + 30);
   context.restore();
-  cursorY += 94;
+
+  drawTextBlock(context, {
+    text: result.sub,
+    x: contentX,
+    y: cursorY + 78,
+    maxWidth: contentWidth,
+    font: `500 25px ${FONT_STACK}`,
+    lineHeight: 34,
+    maxLines: 2,
+    color: "#6a786f",
+  });
+  cursorY += 122;
 
   const posterImageY = cursorY;
-  const posterImageHeight = 600;
+  const posterImageHeight = 680;
   const posterImageGradient = context.createLinearGradient(
     contentX,
     posterImageY,
@@ -347,7 +359,15 @@ export async function buildSbtiSharePoster(
   if (posterSrc) {
     try {
       const posterImage = await loadImage(posterSrc);
-      drawImageContain(context, posterImage, contentX + 36, posterImageY + 36, contentWidth - 72, posterImageHeight - 72, 28);
+      drawImageContain(
+        context,
+        posterImage,
+        contentX + 24,
+        posterImageY + 24,
+        contentWidth - 48,
+        posterImageHeight - 48,
+        28
+      );
     } catch {
       context.save();
       context.font = `700 64px ${FONT_STACK}`;
@@ -369,22 +389,30 @@ export async function buildSbtiSharePoster(
 
   cursorY += posterImageHeight + 28;
 
-  fillRoundedRect(context, contentX, cursorY, contentWidth, 126, 28, "rgba(108, 141, 113, 0.08)");
+  fillRoundedRect(
+    context,
+    contentX,
+    cursorY,
+    contentWidth,
+    112,
+    28,
+    "rgba(108, 141, 113, 0.08)"
+  );
   drawTextBlock(context, {
     text: result.finalType.intro,
     x: contentX + 32,
-    y: cursorY + 32,
+    y: cursorY + 26,
     maxWidth: contentWidth - 64,
-    font: `600 34px ${FONT_STACK}`,
-    lineHeight: 44,
+    font: `600 32px ${FONT_STACK}`,
+    lineHeight: 40,
     maxLines: 2,
     color: "#4d6a53",
     align: "center",
   });
-  cursorY += 154;
+  cursorY += 138;
 
   const summaryCardY = cursorY;
-  const summaryCardHeight = 236;
+  const summaryCardHeight = 220;
   fillRoundedRect(context, contentX, summaryCardY, contentWidth, summaryCardHeight, 30, "#ffffff");
   strokeRoundedRect(
     context,
@@ -407,14 +435,14 @@ export async function buildSbtiSharePoster(
   drawTextBlock(context, {
     text: result.finalType.desc,
     x: contentX + 34,
-    y: summaryCardY + 94,
+    y: summaryCardY + 84,
     maxWidth: contentWidth - 68,
-    font: `500 26px ${FONT_STACK}`,
-    lineHeight: 38,
+    font: `500 25px ${FONT_STACK}`,
+    lineHeight: 36,
     maxLines: 4,
     color: "#415348",
   });
-  cursorY += summaryCardHeight + 24;
+  cursorY += summaryCardHeight + 20;
 
   const dimensionItems = sbtiData.dimensionOrder
     .map((dimension) => ({
@@ -426,13 +454,13 @@ export async function buildSbtiSharePoster(
     .sort((left, right) => right.score - left.score || left.key.localeCompare(right.key))
     .slice(0, 2);
 
-  const dimensionRowHeight = 78;
-  const dimensionRowGap = 14;
+  const dimensionRowHeight = 72;
+  const dimensionRowGap = 12;
   const dimensionCardHeight =
-    92 +
+    88 +
     dimensionItems.length * dimensionRowHeight +
     Math.max(dimensionItems.length - 1, 0) * dimensionRowGap +
-    28;
+    24;
   const dimensionCardY = cursorY;
 
   fillRoundedRect(
@@ -459,11 +487,11 @@ export async function buildSbtiSharePoster(
   context.font = `700 32px ${FONT_STACK}`;
   context.fillStyle = "#1e2a22";
   context.textBaseline = "top";
-  context.fillText(copy.posterDimensionsTitle, contentX + 34, dimensionCardY + 32);
+  context.fillText(copy.posterDimensionsTitle, contentX + 34, dimensionCardY + 30);
   context.restore();
 
   dimensionItems.forEach((item, index) => {
-    const rowY = dimensionCardY + 90 + index * (dimensionRowHeight + dimensionRowGap);
+    const rowY = dimensionCardY + 84 + index * (dimensionRowHeight + dimensionRowGap);
 
     fillRoundedRect(
       context,
@@ -479,14 +507,14 @@ export async function buildSbtiSharePoster(
     context.font = `500 18px ${FONT_STACK}`;
     context.fillStyle = "#6a786f";
     context.textBaseline = "top";
-    context.fillText(item.meta.model, contentX + 48, rowY + 16);
+    context.fillText(item.meta.model, contentX + 48, rowY + 14);
     context.restore();
 
     context.save();
-    context.font = `700 25px ${FONT_STACK}`;
+    context.font = `700 24px ${FONT_STACK}`;
     context.fillStyle = "#1e2a22";
     context.textBaseline = "top";
-    context.fillText(item.meta.name, contentX + 48, rowY + 40);
+    context.fillText(item.meta.name, contentX + 48, rowY + 36);
     context.restore();
 
     context.save();
@@ -520,14 +548,29 @@ export async function buildSbtiSharePoster(
   context.restore();
 
   context.save();
-  context.textAlign = "center";
   context.textBaseline = "top";
   context.font = `700 24px ${FONT_STACK}`;
+  const footerTitleWidth = context.measureText(copy.posterFooter).width;
+  context.font = `500 18px ${FONT_STACK}`;
+  const footerDomainWidth = context.measureText("sbtitest.com").width;
+  context.font = `500 20px ${FONT_STACK}`;
+  const footerDotWidth = context.measureText(" · ").width;
+  const footerTotalWidth = footerTitleWidth + footerDotWidth + footerDomainWidth;
+  let footerX = POSTER_WIDTH / 2 - footerTotalWidth / 2;
+
+  context.font = `700 24px ${FONT_STACK}`;
   context.fillStyle = "#35503c";
-  context.fillText(copy.posterFooter, POSTER_WIDTH / 2, footerY);
+  context.fillText(copy.posterFooter, footerX, footerY);
+  footerX += footerTitleWidth;
+
+  context.font = `500 20px ${FONT_STACK}`;
+  context.fillStyle = "#7a887d";
+  context.fillText(" · ", footerX, footerY + 2);
+  footerX += footerDotWidth;
+
   context.font = `500 18px ${FONT_STACK}`;
   context.fillStyle = "#607263";
-  context.fillText("sbtitest.com", POSTER_WIDTH / 2, footerY + 34);
+  context.fillText("sbtitest.com", footerX, footerY + 4);
   context.restore();
 
   return canvasToBlob(canvas);
