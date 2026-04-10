@@ -56,4 +56,7 @@ Disallow: /
 User-agent: meta-externalagent
 Disallow: /
 
+User-agent: Baiduspider
+Allow: /
+
 # END Cloudflare Managed Content
