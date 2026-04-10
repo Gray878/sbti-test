@@ -614,14 +614,6 @@ export default function SbtiExperience() {
                   </p>
                 </div>
 
-                <details className={styles.authorBox}>
-                  <summary>{t("result.authorTitle")}</summary>
-                  <div className={styles.authorContent}>
-                    {[1, 2, 3, 4].map((index) => (
-                      <p key={index}>{t(`result.authorNote${index}`)}</p>
-                    ))}
-                  </div>
-                </details>
               </div>
 
               <div className={styles.resultActions}>
