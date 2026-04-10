@@ -545,6 +545,9 @@
 .posterFrame {
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border-radius: 30px;
   padding: 18px;
@@ -558,10 +561,11 @@
 
 .posterImage {
   width: 100%;
-  min-height: 320px;
-  max-height: 760px;
-  object-fit: cover;
-  object-position: top center;
+  min-height: 280px;
+  max-height: 720px;
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  object-position: center;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.92);
   position: relative;
@@ -890,6 +894,22 @@
   .actionsBottom,
   .resultActions {
     justify-content: flex-start;
+  }
+}
+
+@media (min-width: 960px) {
+  .resultTop {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 18px;
+  }
+
+  .posterBox,
+  .typeBox {
+    height: 100%;
+  }
+
+  .posterCaption {
+    font-size: clamp(18px, 1.7vw, 24px);
   }
 }
 
