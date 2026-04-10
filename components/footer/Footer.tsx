@@ -1,7 +1,9 @@
 import { Link as I18nLink } from "@/i18n/routing";
 import { siteConfig } from "@/config/site";
+import { getTranslations } from "next-intl/server";
 
-export default function Footer() {
+export default async function Footer() {
+  const t = await getTranslations("Footer");
   const year = new Date().getFullYear();
 
   return (
@@ -13,26 +15,24 @@ export default function Footer() {
       }}
     >
       <div className="mx-auto flex max-w-[980px] flex-col items-center justify-between gap-2 px-4 py-4 text-sm text-[#4d5c52] md:flex-row">
-        <p>
-          © {year} {siteConfig.name} 保留所有权利。
-        </p>
+        <p>{t("Copyright", { year, name: siteConfig.name })}</p>
 
         <div className="flex items-center gap-5">
           <I18nLink
             href="/privacy-policy"
-            title="隐私政策"
+            title={t("PrivacyPolicy")}
             prefetch={false}
             className="transition-colors hover:text-[#1e2a22]"
           >
-            隐私政策
+            {t("PrivacyPolicy")}
           </I18nLink>
           <I18nLink
             href="/terms-of-service"
-            title="服务条款"
+            title={t("TermsOfService")}
             prefetch={false}
             className="transition-colors hover:text-[#1e2a22]"
           >
-            服务条款
+            {t("TermsOfService")}
           </I18nLink>
         </div>
       </div>
