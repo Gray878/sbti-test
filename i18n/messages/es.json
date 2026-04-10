@@ -1,0 +1,246 @@
+{
+  "LanguageDetection": {
+    "title": "Sugerencia de idioma",
+    "description": "Hemos detectado que el idioma de tu navegador no coincide con el idioma actual del sitio. Puedes cambiarlo en cualquier momento.",
+    "countdown": "Se cerrará en {countdown} segundos",
+    "switchTo": "Cambiar a",
+    "dismiss": "Cerrar sugerencia de idioma"
+  },
+  "Header": {
+    "links": [
+      {
+        "name": "Introducción",
+        "href": "/blog"
+      },
+      {
+        "name": "Acerca de",
+        "href": "/about"
+      }
+    ]
+  },
+  "Footer": {
+    "Copyright": "© {year} {name} Todos los derechos reservados.",
+    "PrivacyPolicy": "Política de privacidad",
+    "TermsOfService": "Términos del servicio",
+    "Links": {
+      "groups": [
+        {
+          "title": "Idiomas",
+          "links": [
+            {
+              "href": "/",
+              "name": "中文",
+              "useA": true
+            },
+            {
+              "href": "/en",
+              "name": "English",
+              "useA": true
+            },
+            {
+              "href": "/ja",
+              "name": "日本語",
+              "useA": true
+            },
+            {
+              "href": "/es",
+              "name": "Español",
+              "useA": true
+            }
+          ]
+        },
+        {
+          "title": "Sitio",
+          "links": [
+            {
+              "href": "/blog",
+              "name": "Blog"
+            },
+            {
+              "href": "/about",
+              "name": "Acerca de"
+            }
+          ]
+        }
+      ]
+    },
+    "Newsletter": {
+      "title": "Suscríbete a nuestro boletín",
+      "description": "Recibe actualizaciones cuando el sitio SBTI publique contenido nuevo.",
+      "defaultErrorMessage": "Introduce una dirección de correo válida",
+      "successMessage": "Suscripción completada",
+      "errorMessage": "No se pudo completar la suscripción",
+      "errorMessage2": "No se pudo completar la suscripción. Inténtalo de nuevo más tarde.",
+      "subscribe": "Suscribirse",
+      "subscribing": "Suscribiendo...",
+      "subscribed": "Suscripción completada. Gracias por tu interés."
+    }
+  },
+  "Home": {
+    "title": "Test de Personalidad SBTI",
+    "tagLine": "Test de Personalidad",
+    "description": "SBTI es un test de personalidad orientado al entretenimiento y basado en 15 dimensiones. Incluye 27 tipos de personalidad (CTRL, BOSS, DRUNK, etc.). Con nombres inspirados en la cultura de internet china, tipos ocultos y mecanismos especiales, puedes completarlo en 5-10 minutos para obtener tu póster exclusivo y un análisis detallado.",
+    "blogCta": "Ver introducción"
+  },
+  "Blog": {
+    "title": "Artículos del blog",
+    "description": "Una lista de artículos del blog"
+  },
+  "About": {
+    "title": "Acerca de",
+    "description": "Acerca del sitio"
+  },
+  "TermsOfService": {
+    "title": "Términos del servicio",
+    "description": "Términos del servicio"
+  },
+  "PrivacyPolicy": {
+    "title": "Política de privacidad",
+    "description": "Política de privacidad"
+  },
+  "Showcase": {
+    "title": "Creado con este starter",
+    "description": "Descubre productos y sitios web creados con esta plantilla starter de Next.js.",
+    "visitSite": "Visitar sitio"
+  },
+  "Submission": {
+    "badge": "Aparece destacado",
+    "title": "Envía tu producto",
+    "description": "?Has creado algo con este starter? Comparte tu producto con la comunidad.",
+    "productNameLabel": "Nombre del producto",
+    "productNamePlaceholder": "Mi proyecto increíble",
+    "productUrlLabel": "URL del producto",
+    "submit": "Enviar producto",
+    "submitting": "Enviando...",
+    "successMessage": "Gracias. Hemos recibido tu envío.",
+    "errorMessage": "Algo ha salido mal. Inténtalo de nuevo."
+  },
+  "SbtiTest": {
+    "hero": {
+      "title": "MBTI ya se quedó viejo, ha llegado SBTI.",
+      "startButton": "Empezar test"
+    },
+    "intro": {
+      "whatIs": {
+        "title": "?Qué es el test de personalidad SBTI?",
+        "p1": "SBTI es un test de personalidad orientado al entretenimiento y basado en 15 dimensiones. Incluye 30 preguntas normales, 2 preguntas especiales y un total de 27 tipos de personalidad. A diferencia del MBTI tradicional, SBTI usa nombres nacidos de la cultura de internet china, como CTRL, BOSS o DRUNK, que conectan mejor con las generaciones más jóvenes.",
+        "p2": "El test incluye el tipo oculto DRUNK, que se activa mediante preguntas especiales, y el tipo de respaldo HHHH, que aparece cuando la similitud con la biblioteca normal es baja. Eso hace que toda la experiencia sea más divertida y explorable."
+      },
+      "features": {
+        "title": "Características del test SBTI",
+        "f1": {
+          "title": "15 dimensiones clave",
+          "desc": "Cubren aspectos del yo, la emoción, la actitud, la acción y la interacción social"
+        },
+        "f2": {
+          "title": "27 tipos de personalidad",
+          "desc": "Desde CTRL hasta DEAD, cada tipo tiene rasgos y tono propios"
+        },
+        "f3": {
+          "title": "Mecanismos ocultos",
+          "desc": "Incluye tipos ocultos activados por condiciones especiales y resultados de respaldo del sistema"
+        },
+        "f4": {
+          "title": "Resultados visuales",
+          "desc": "Cada tipo incluye un póster exclusivo y una interpretación detallada"
+        },
+        "f5": {
+          "title": "Pensado para entretener",
+          "desc": "Usa cultura meme y jerga de internet, por lo que resulta memorable y muy compartible"
+        }
+      }
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "q1": {
+        "question": "?Cuánto tarda el test SBTI?",
+        "answer": "Normalmente se completa en 5-10 minutos. El test contiene 30 preguntas normales y hasta 2 preguntas especiales. Lo mejor es responder en un entorno tranquilo y seguir tu primer impulso, sin pensarlo demasiado."
+      },
+      "q2": {
+        "question": "?Cuál es la diferencia entre SBTI y MBTI?",
+        "answer": "MBTI es un test profesional de personalidad basado en la teoría psicológica de Jung. En cambio, SBTI es un test orientado al entretenimiento. Usa un lenguaje de internet más directo y terrenal, se centra en la diversión y en compartir resultados, y no debe utilizarse como evaluación psicológica profesional."
+      },
+      "q3": {
+        "question": "?Qué es la personalidad oculta DRUNK?",
+        "answer": "DRUNK es un tipo de easter egg dentro del test. Solo aparece al activar una ruta relacionada con el alcohol. No pertenece a los 25 tipos estándar, sino que es un mecanismo especial diseñado por el autor para exagerar la sensación de ?el alcohol ha tomado el control del sistema?."
+      },
+      "q4": {
+        "question": "?Por qué mi resultado es HHHH?",
+        "answer": "HHHH es el tipo de respaldo del sistema. Cuando tu patrón de respuestas se aleja demasiado de la base de tipos estándar y no puede clasificarse con claridad, se te asigna este resultado. Eso indica que tus rasgos son bastante singulares y no encajan bien en las plantillas habituales."
+      },
+      "q5": {
+        "question": "?El resultado del test SBTI es preciso?",
+        "answer": "SBTI es un test de entretenimiento y no tiene el rigor ni la precisión de una evaluación psicológica profesional. Se parece más a un espejo curioso que exagera ciertos rasgos de tu personalidad. No utilices el resultado para diagnósticos médicos, decisiones laborales, juicios sobre otras personas u otros escenarios serios."
+      },
+      "q6": {
+        "question": "?Puedo repetir el test?",
+        "answer": "Sí. Aun así, conviene esperar un poco antes de repetirlo, porque hacerlo muchas veces en poco tiempo se ve afectado por la memoria. Los resultados pueden variar según el momento y el estado de ánimo, y eso también forma parte de la gracia de este tipo de tests."
+      },
+      "q7": {
+        "question": "?Cuáles son los 27 tipos de personalidad?",
+        "answer": "Incluyen: CTRL (Controlador), ATM-er (El que siempre paga), Dior-s (Perdedor sabio), BOSS (Líder), THAN-K (Agradecido), OH-NO (Prevención de desastres), GOGO (El que actúa), SEXY (Magnético), LOVE-R (Romántico extremo), MUM (Mamá), FAKE (Cambia máscaras), OJBK (Me da igual), MALO (Tramposo juguetón), JOKE-R (Bromista), WOC! (El del ?guau?), THIN-K (Pensador), SHIT (Cínico), ZZZZ (Modo plazo límite), POOR (Haz estrecho), MONK (Monje), IMSB (Tonto que se sabotea), SOLO (Aislado), FUCK (Fuerza salvaje), DEAD (Sabio agotado), IMFW (Creyente frágil), HHHH (Risa de respaldo) y DRUNK (Borracho)."
+      }
+    },
+    "test": {
+      "questionNumber": "Pregunta {number}",
+      "specialQuestion": "Pregunta adicional",
+      "dimensionHidden": "Dimensión oculta",
+      "hintComplete": "Ya está todo listo. Ahora puedes enviar tu alma digital para que la juzgue la página de resultados.",
+      "hintIncomplete": "Completa todas las preguntas para continuar. El mundo ya es bastante caótico; al menos termina el cuestionario.",
+      "backButton": "Volver al inicio",
+      "submitButton": "Enviar y ver resultados"
+    },
+    "result": {
+      "analysisTitle": "Interpretación simple de esta personalidad",
+      "dimensionsTitle": "Puntuaciones de las quince dimensiones",
+      "scoreUnit": " pts",
+      "noteTitle": "Aviso amistoso",
+      "funNote": "Este test es solo para entretenimiento. No lo tomes como diagnóstico, entrevista, cita, ruptura, sesión espiritista, adivinación o veredicto vital. Puedes reírte, pero no tomártelo demasiado en serio.",
+      "specialNote": "Este test es solo para entretenimiento. Las personalidades ocultas y los resultados de respaldo forzado son trucos colocados a propósito por el autor. No lo uses como base para medicina, psicología, fisiognomía, numerología o estudios paranormales.",
+      "authorTitle": "Palabras del autor",
+      "authorNote1": "Este test se publicó originalmente por el creador de Bilibili Qurouer Chuaner (UID 417038183), con la intención inicial de convencer a un amigo muy bebedor de dejar el alcohol.",
+      "authorNote2": "Como la personalidad del autor es SHIT, atacó a todo el mundo por igual y pide disculpas por ello. Pero también dice que es una belleza deslumbrante, así que seguro que lo perdonas. Si usas Bilibili, también puedes seguirle allí.",
+      "authorNote3": "Respecto a este test, el autor no consiguió equilibrar bien entretenimiento y profesionalidad, así que algunas interpretaciones pueden ser vagas o incluso inexactas. Si alguien se sintió ofendido, ofrece sus disculpas.",
+      "authorNote4": "Como el tiempo y la energía son limitados, por ahora se queda como un juego divertido y luego se irá puliendo poco a poco. En resumen: lo importante es pasarlo bien, no usarlo con fines lucrativos.",
+      "shareButton": "Crear póster para compartir",
+      "shareButtonLoading": "Generando póster...",
+      "shareSheetTitle": "Comparte tu resultado",
+      "shareSheetHint": "Se genera con formato de póster vertical para móvil, ideal para guardar y republicar.",
+      "shareSheetLongPressHint": "En móvil puedes mantener pulsado el póster para guardarlo. Si tu navegador lo permite, también puedes usar el sistema de compartir.",
+      "savePosterButton": "Guardar póster",
+      "systemShareButton": "Compartir con el sistema",
+      "closeShareButton": "Cerrar panel de compartir",
+      "shareError": "No se pudo generar el póster. Inténtalo de nuevo.",
+      "nativeShareError": "Ha fallado la función de compartir del sistema. Guarda la imagen primero y compártela manualmente.",
+      "posterTitle": "Tu resultado SBTI",
+      "posterSummaryTitle": "Lectura rápida",
+      "posterDimensionsTitle": "Dimensiones clave",
+      "posterFooter": "Test de Personalidad SBTI",
+      "mode": {
+        "defaultKicker": "Tipo principal",
+        "defaultBadge": "Coincidencia {similarity}% ? Aciertos exactos {exact}/15",
+        "defaultSub": "Tu perfil dimensional encaja bastante bien, así que este resultado puede considerarse tu retrato principal de personalidad.",
+        "drunkKicker": "Tipo oculto activado",
+        "drunkBadge": "Coincidencia 100% ? El factor anómalo del alcohol ha tomado el control",
+        "drunkSub": "Tu afinidad con el etanol es demasiado alta, así que el sistema se saltó por completo la evaluación de personalidad normal.",
+        "fallbackKicker": "Respaldo forzado",
+        "fallbackBadge": "La mejor coincidencia con la biblioteca estándar es solo del {similarity}%",
+        "fallbackSub": "La biblioteca de personalidades estándar renunció colectivamente a entender el cableado de tu cerebro, así que el sistema te empujó hacia HHHH."
+      },
+      "retestButton": "Repetir test",
+      "backButton": "Volver al inicio"
+    }
+  },
+  "Unsubscribe": {
+    "title": "Gestión de suscripción por correo",
+    "successMessage": "Has cancelado correctamente la suscripción a las notificaciones por correo.",
+    "emailLabel": "Correo:",
+    "resubscribeHint": "Si cambias de idea, puedes volver a suscribirte en cualquier momento.",
+    "supportHint": "Asegúrate de haber usado el enlace de baja correcto o contacta con nuestro equipo de soporte para obtener ayuda.",
+    "genericError": "Se produjo un error al procesar tu solicitud de baja.",
+    "missingToken": "No se proporcionó un token de baja.",
+    "invalidEmail": "Este enlace de baja no es válido.",
+    "notSubscribed": "Este correo no está suscrito a nuestras notificaciones.",
+    "tooManyRequests": "Demasiadas solicitudes. Inténtalo de nuevo más tarde."
+  }
+}

@@ -87,7 +87,7 @@ export function LanguageDetectionAlert() {
       )}
       role="banner"
       aria-live="polite"
-      aria-label="Language detection alert"
+      aria-label={alertMessages.title}
     >
       <div className="bg-background/95 backdrop-blur-md border border-border rounded-xl shadow-lg p-4 relative">
         <Button
@@ -95,7 +95,7 @@ export function LanguageDetectionAlert() {
           size="icon"
           className="absolute right-2 top-2 h-6 w-6 opacity-50 hover:opacity-100"
           onClick={handleDismiss}
-          aria-label="Dismiss language suggestion"
+          aria-label={alertMessages.dismiss}
         >
           <X className="h-4 w-4" />
         </Button>

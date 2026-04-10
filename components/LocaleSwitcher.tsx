@@ -27,7 +27,7 @@ export default function LocaleSwitcher() {
   const locale = useLocale();
   const { dismissLanguageAlert } = useLocaleStore();
   const [, startTransition] = useTransition();
-  const [currentLocale, setCurrentLocale] = useState("locale");
+  const [currentLocale, setCurrentLocale] = useState(locale);
 
   useEffect(() => {
     setCurrentLocale(locale);
@@ -57,7 +57,7 @@ export default function LocaleSwitcher() {
     >
       <SelectTrigger className="w-fit">
         <Globe className="w-4 h-4 mr-1" />
-        <SelectValue placeholder="Language" />
+        <SelectValue placeholder={LOCALE_NAMES[locale]} />
       </SelectTrigger>
       <SelectContent>
         {routing.locales.map((cur) => (

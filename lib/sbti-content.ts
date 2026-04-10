@@ -1,4 +1,5 @@
 import { Locale } from "@/i18n/routing";
+import { ES_CONTENT } from "@/lib/sbti-content-es";
 import {
   DimensionKey,
   ScoreLevel,
@@ -991,6 +992,8 @@ export function getSbtiContent(locale: Locale): SbtiLocalizedContent {
   switch (locale) {
     case "en":
       return EN_CONTENT;
+    case "es":
+      return ES_CONTENT;
     case "ja":
       return JA_CONTENT;
     default:

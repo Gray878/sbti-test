@@ -30,11 +30,19 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   let { posts }: { posts: BlogPost[] } = await getPosts(locale);
   const post = posts.find((post) => post.slug === "/" + slug);
+  const notFoundDescription =
+    locale === "zh"
+      ? "页面未找到"
+      : locale === "ja"
+        ? "ページが見つかりません"
+        : locale === "es"
+          ? "Página no encontrada"
+          : "Page not found";
 
   if (!post) {
     return constructMetadata({
       title: "404",
-      description: "Page not found",
+      description: notFoundDescription,
       noIndex: true,
       locale: locale as Locale,
       path: `/blog/${slug}`,
@@ -96,19 +104,17 @@ export default async function BlogPage({ params }: { params: Params }) {
 }
 
 export async function generateStaticParams() {
-  let posts = (await getPosts()).posts;
+  const localizedPosts = await Promise.all(
+    LOCALES.map(async (locale) => ({
+      locale,
+      posts: (await getPosts(locale)).posts.filter((post) => post.slug),
+    }))
+  );
 
-  // Filter out posts without a slug
-  posts = posts.filter((post) => post.slug);
-
-  return LOCALES.flatMap((locale) =>
-    posts.map((post) => {
-      const slugPart = post.slug.replace(/^\//, "").replace(/^blog\//, "");
-
-      return {
-        locale,
-        slug: slugPart,
-      };
-    })
+  return localizedPosts.flatMap(({ locale, posts }) =>
+    posts.map((post) => ({
+      locale,
+      slug: post.slug.replace(/^\//, "").replace(/^blog\//, ""),
+    }))
   );
 }

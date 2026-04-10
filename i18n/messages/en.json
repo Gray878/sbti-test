@@ -3,7 +3,8 @@
     "title": "Language Suggestion",
     "description": "We noticed your browser language differs from the current site language. You can switch languages anytime.",
     "countdown": "Closing in {countdown} seconds",
-    "switchTo": "Switch to"
+    "switchTo": "Switch to",
+    "dismiss": "Dismiss language suggestion"
   },
   "Header": {
     "links": [
@@ -39,6 +40,11 @@
             {
               "href": "/ja",
               "name": "日本語",
+              "useA": true
+            },
+            {
+              "href": "/es",
+              "name": "Espa?ol",
               "useA": true
             }
           ]
@@ -224,5 +230,17 @@
       "retestButton": "Retake Test",
       "backButton": "Back to Home"
     }
+  },
+  "Unsubscribe": {
+    "title": "Email Subscription Management",
+    "successMessage": "You have successfully unsubscribed from email notifications.",
+    "emailLabel": "Email:",
+    "resubscribeHint": "If you change your mind, you can subscribe again at any time.",
+    "supportHint": "Please make sure you used the correct unsubscribe link, or contact our support team for help.",
+    "genericError": "An error occurred while processing your unsubscribe request.",
+    "missingToken": "No unsubscribe token was provided.",
+    "invalidEmail": "The unsubscribe link is invalid.",
+    "notSubscribed": "This email is not subscribed to our notifications.",
+    "tooManyRequests": "Too many requests. Please try again later."
   }
 }
