@@ -232,7 +232,25 @@ export async function buildSbtiSharePoster(result: ComputedSbtiResult, copy: Sbt
     throw new Error("Canvas is not available.");
   }
 
-  const summaryCardY = 1284;
+  const headerBlockHeight = 84;
+  const sectionGap = 28;
+  const posterImageHeight = 648;
+  const introTextHeight = measureTextHeight(
+    context,
+    result.finalType.intro,
+    CONTENT_WIDTH - 72,
+    `600 32px ${FONT_STACK}`,
+    42,
+    2
+  );
+  const heroCardHeight = 30 + posterImageHeight + 28 + introTextHeight + 36;
+  const subTextHeight = measureTextHeight(
+    context,
+    result.sub,
+    CONTENT_WIDTH - 72,
+    `500 28px ${FONT_STACK}`,
+    40
+  );
   const summaryTextHeight = measureTextHeight(
     context,
     result.finalType.desc,
@@ -240,8 +258,17 @@ export async function buildSbtiSharePoster(result: ComputedSbtiResult, copy: Sbt
     `500 25px ${FONT_STACK}`,
     36
   );
-  const summaryCardHeight = Math.max(220, 84 + summaryTextHeight + 40);
-  const footerY = summaryCardY + summaryCardHeight + 44;
+  const typeCardHeight = Math.max(320, 262 + subTextHeight);
+  const summaryCardHeight = Math.max(220, 88 + summaryTextHeight + 42);
+  const footerY =
+    112 +
+    headerBlockHeight +
+    heroCardHeight +
+    sectionGap +
+    typeCardHeight +
+    sectionGap +
+    summaryCardHeight +
+    44;
   const posterHeight = Math.max(MIN_POSTER_HEIGHT, footerY + 84);
 
   if (posterHeight !== canvas.height) {
@@ -319,71 +346,63 @@ export async function buildSbtiSharePoster(result: ComputedSbtiResult, copy: Sbt
   context.fillStyle = "#5f7966";
   context.textAlign = "left";
   context.fillText(copy.posterTitle, CONTENT_X + 176, cursorY + 27);
-  context.font = `600 24px ${FONT_STACK}`;
-  context.fillStyle = "#6a786f";
-  context.textAlign = "right";
-  context.fillText(result.modeKicker, CONTENT_X + CONTENT_WIDTH, cursorY + 27);
   context.restore();
-  cursorY += 88;
+  cursorY += headerBlockHeight;
 
-  context.save();
-  context.textBaseline = "top";
-  context.font = `800 92px ${FONT_STACK}`;
-  context.fillStyle = "#1e2a22";
-  const codeWidth = context.measureText(result.finalType.code).width;
-  context.fillText(result.finalType.code, CONTENT_X, cursorY);
-  context.font = `700 56px ${FONT_STACK}`;
-  context.fillStyle = "#39513f";
-  const cnWidth = context.measureText(result.finalType.cn).width;
-  const cnX = Math.min(CONTENT_X + codeWidth + 28, CONTENT_X + CONTENT_WIDTH - cnWidth);
-  context.fillText(result.finalType.cn, cnX, cursorY + 22);
-  context.restore();
-  cursorY += 116;
-
-  context.save();
-  context.font = `700 28px ${FONT_STACK}`;
-  const badgeWidth = Math.min(
-    Math.max(context.measureText(result.badge).width + 48, 220),
-    CONTENT_WIDTH
-  );
-  context.restore();
-  fillRoundedRect(context, CONTENT_X, cursorY, badgeWidth, 60, 30, "#edf6ef");
-  context.save();
-  context.textBaseline = "middle";
-  context.font = `700 28px ${FONT_STACK}`;
-  context.fillStyle = "#4d6a53";
-  context.fillText(result.badge, CONTENT_X + 24, cursorY + 30);
-  context.restore();
-
-  drawTextBlock(context, {
-    text: result.sub,
-    x: CONTENT_X,
-    y: cursorY + 78,
-    maxWidth: CONTENT_WIDTH,
-    font: `500 25px ${FONT_STACK}`,
-    lineHeight: 34,
-    color: "#6a786f",
-  });
-  cursorY += 122;
-
-  const posterImageHeight = 680;
-  const posterImageGradient = context.createLinearGradient(
+  const heroCardGradient = context.createLinearGradient(
     CONTENT_X,
     cursorY,
     CONTENT_X,
-    cursorY + posterImageHeight
+    cursorY + heroCardHeight
   );
-  posterImageGradient.addColorStop(0, "#f7fbf8");
-  posterImageGradient.addColorStop(1, "#eef5ef");
-  fillRoundedRect(context, CONTENT_X, cursorY, CONTENT_WIDTH, posterImageHeight, 34, posterImageGradient);
+  heroCardGradient.addColorStop(0, "rgba(255, 255, 255, 0.98)");
+  heroCardGradient.addColorStop(1, "rgba(245, 250, 246, 0.98)");
+
+  context.save();
+  context.shadowColor = "rgba(47, 73, 55, 0.08)";
+  context.shadowBlur = 32;
+  context.shadowOffsetY = 12;
+  fillRoundedRect(context, CONTENT_X, cursorY, CONTENT_WIDTH, heroCardHeight, 38, heroCardGradient);
+  context.restore();
   strokeRoundedRect(
     context,
     CONTENT_X,
     cursorY,
     CONTENT_WIDTH,
-    posterImageHeight,
-    34,
+    heroCardHeight,
+    38,
     "rgba(108, 141, 113, 0.16)",
+    2
+  );
+
+  const posterFrameX = CONTENT_X + 28;
+  const posterFrameY = cursorY + 30;
+  const posterFrameWidth = CONTENT_WIDTH - 56;
+  const posterFrameGradient = context.createLinearGradient(
+    posterFrameX,
+    posterFrameY,
+    posterFrameX,
+    posterFrameY + posterImageHeight
+  );
+  posterFrameGradient.addColorStop(0, "#f8fbf8");
+  posterFrameGradient.addColorStop(1, "#eef5ef");
+  fillRoundedRect(
+    context,
+    posterFrameX,
+    posterFrameY,
+    posterFrameWidth,
+    posterImageHeight,
+    30,
+    posterFrameGradient
+  );
+  strokeRoundedRect(
+    context,
+    posterFrameX,
+    posterFrameY,
+    posterFrameWidth,
+    posterImageHeight,
+    30,
+    "rgba(108, 141, 113, 0.18)",
     2
   );
 
@@ -395,11 +414,11 @@ export async function buildSbtiSharePoster(result: ComputedSbtiResult, copy: Sbt
       drawImageContain(
         context,
         posterImage,
-        CONTENT_X + 24,
-        cursorY + 24,
-        CONTENT_WIDTH - 48,
-        posterImageHeight - 48,
-        28
+        posterFrameX + 18,
+        posterFrameY + 18,
+        posterFrameWidth - 36,
+        posterImageHeight - 36,
+        24
       );
     } catch {
       context.save();
@@ -407,26 +426,121 @@ export async function buildSbtiSharePoster(result: ComputedSbtiResult, copy: Sbt
       context.textBaseline = "middle";
       context.font = `700 64px ${FONT_STACK}`;
       context.fillStyle = "#5f7966";
-      context.fillText(result.finalType.code, CONTENT_X + CONTENT_WIDTH / 2, cursorY + posterImageHeight / 2);
+      context.fillText(
+        result.finalType.code,
+        posterFrameX + posterFrameWidth / 2,
+        posterFrameY + posterImageHeight / 2
+      );
       context.restore();
     }
+  } else {
+    context.save();
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.font = `700 64px ${FONT_STACK}`;
+    context.fillStyle = "#5f7966";
+    context.fillText(
+      result.finalType.code,
+      posterFrameX + posterFrameWidth / 2,
+      posterFrameY + posterImageHeight / 2
+    );
+    context.restore();
   }
 
-  cursorY += posterImageHeight + 28;
-
-  fillRoundedRect(context, CONTENT_X, cursorY, CONTENT_WIDTH, 112, 28, "rgba(108, 141, 113, 0.08)");
   drawTextBlock(context, {
     text: result.finalType.intro,
-    x: CONTENT_X + 32,
-    y: cursorY + 26,
-    maxWidth: CONTENT_WIDTH - 64,
+    x: CONTENT_X + 36,
+    y: posterFrameY + posterImageHeight + 28,
+    maxWidth: CONTENT_WIDTH - 72,
     font: `600 32px ${FONT_STACK}`,
-    lineHeight: 40,
-    color: "#4d6a53",
-    align: "center",
+    lineHeight: 42,
+    color: "#566d5d",
     maxLines: 2,
   });
-  cursorY += 138;
+
+  cursorY += heroCardHeight + sectionGap;
+
+  const typeCardGradient = context.createLinearGradient(
+    CONTENT_X,
+    cursorY,
+    CONTENT_X,
+    cursorY + typeCardHeight
+  );
+  typeCardGradient.addColorStop(0, "rgba(255, 255, 255, 0.98)");
+  typeCardGradient.addColorStop(1, "rgba(248, 252, 249, 0.98)");
+  fillRoundedRect(context, CONTENT_X, cursorY, CONTENT_WIDTH, typeCardHeight, 34, typeCardGradient);
+  strokeRoundedRect(
+    context,
+    CONTENT_X,
+    cursorY,
+    CONTENT_WIDTH,
+    typeCardHeight,
+    34,
+    "rgba(108, 141, 113, 0.16)",
+    2
+  );
+
+  context.save();
+  context.textBaseline = "top";
+  context.font = `600 24px ${FONT_STACK}`;
+  context.fillStyle = "#59705f";
+  context.fillText(result.modeKicker, CONTENT_X + 36, cursorY + 34);
+  context.restore();
+
+  context.save();
+  context.textBaseline = "top";
+  context.font = `800 78px ${FONT_STACK}`;
+  context.fillStyle = "#1e2a22";
+  const codeWidth = context.measureText(result.finalType.code).width;
+  context.fillText(result.finalType.code, CONTENT_X + 36, cursorY + 78);
+  context.font = `700 50px ${FONT_STACK}`;
+  context.fillStyle = "#35503c";
+  const typeCnText = `（${result.finalType.cn}）`;
+  const cnWidth = context.measureText(typeCnText).width;
+  const cnX = Math.min(CONTENT_X + 36 + codeWidth + 24, CONTENT_X + CONTENT_WIDTH - 36 - cnWidth);
+  context.fillText(typeCnText, cnX, cursorY + 96);
+  context.restore();
+
+  context.save();
+  context.font = `700 28px ${FONT_STACK}`;
+  const badgeWidth = Math.min(
+    Math.max(context.measureText(result.badge).width + 52, 280),
+    CONTENT_WIDTH - 72
+  );
+  context.restore();
+  fillRoundedRect(context, CONTENT_X + 36, cursorY + 188, badgeWidth, 68, 34, "#e8f3ea");
+  strokeRoundedRect(
+    context,
+    CONTENT_X + 36,
+    cursorY + 188,
+    badgeWidth,
+    68,
+    34,
+    "rgba(108, 141, 113, 0.16)",
+    2
+  );
+  drawTextBlock(context, {
+    text: result.badge,
+    x: CONTENT_X + 60,
+    y: cursorY + 204,
+    maxWidth: badgeWidth - 48,
+    font: `700 28px ${FONT_STACK}`,
+    lineHeight: 32,
+    color: "#4d6a53",
+    maxLines: 2,
+  });
+
+  drawTextBlock(context, {
+    text: result.sub,
+    x: CONTENT_X + 36,
+    y: cursorY + 284,
+    maxWidth: CONTENT_WIDTH - 72,
+    font: `500 28px ${FONT_STACK}`,
+    lineHeight: 40,
+    color: "#66786d",
+  });
+
+  cursorY += typeCardHeight + sectionGap;
 
   fillRoundedRect(context, CONTENT_X, cursorY, CONTENT_WIDTH, summaryCardHeight, 30, "#ffffff");
   strokeRoundedRect(

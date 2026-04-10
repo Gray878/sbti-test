@@ -523,14 +523,20 @@ export default function SbtiExperience() {
                         styles.posterBoxNoImage
                     )}
                   >
-                    {sbtiData.typeImages[result.finalType.code] && (
-                      <img
-                        alt={`${result.finalType.code}（${result.finalType.cn}）`}
-                        className={styles.posterImage}
-                        loading="lazy"
-                        src={sbtiData.typeImages[result.finalType.code]}
-                      />
-                    )}
+                    <div className={styles.posterFrame}>
+                      {sbtiData.typeImages[result.finalType.code] ? (
+                        <img
+                          alt={`${result.finalType.code}（${result.finalType.cn}）`}
+                          className={styles.posterImage}
+                          loading="lazy"
+                          src={sbtiData.typeImages[result.finalType.code]}
+                        />
+                      ) : (
+                        <div className={styles.posterFallback}>
+                          {result.finalType.code}
+                        </div>
+                      )}
+                    </div>
                     <div className={styles.posterCaption}>
                       {result.finalType.intro}
                     </div>
@@ -539,7 +545,12 @@ export default function SbtiExperience() {
                   <div className={styles.typeBox}>
                     <div className={styles.typeKicker}>{result.modeKicker}</div>
                     <h2 className={styles.typeName}>
-                      {result.finalType.code}（{result.finalType.cn}）
+                      <span className={styles.typeCode}>
+                        {result.finalType.code}
+                      </span>
+                      <span className={styles.typeCn}>
+                        （{result.finalType.cn}）
+                      </span>
                     </h2>
                     <div className={styles.match}>{result.badge}</div>
                     <div className={styles.typeSubname}>{result.sub}</div>
