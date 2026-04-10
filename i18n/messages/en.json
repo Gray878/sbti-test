@@ -210,6 +210,17 @@
       "posterSummaryTitle": "Quick Read",
       "posterDimensionsTitle": "Top Dimensions",
       "posterFooter": "SBTI Personality Test",
+      "mode": {
+        "defaultKicker": "Primary Type",
+        "defaultBadge": "Match {similarity}% · Exact hits {exact}/15",
+        "defaultSub": "Your dimension profile lines up fairly well, so this can be treated as your main personality portrait.",
+        "drunkKicker": "Hidden Type Activated",
+        "drunkBadge": "Match 100% · Alcohol anomaly factor has taken over",
+        "drunkSub": "Your ethanol affinity is way too high, so the system skipped the standard personality trial entirely.",
+        "fallbackKicker": "Forced Fallback",
+        "fallbackBadge": "Best standard-library match only {similarity}%",
+        "fallbackSub": "The standard personality library collectively gave up on your brain wiring, so the system shoved you into HHHH instead."
+      },
       "retestButton": "Retake Test",
       "backButton": "Back to Home"
     }

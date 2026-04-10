@@ -1,17 +1,20 @@
 "use client";
 
 import StructuredData from "@/components/StructuredData";
+import { Locale } from "@/i18n/routing";
+import { getSbtiContent } from "@/lib/sbti-content";
 import {
   AnswerMap,
   ComputedSbtiResult,
   SbtiQuestion,
+  SbtiResultCopy,
   computeSbtiResult,
   createQuestionFlow,
   getVisibleQuestions,
   sbtiData,
 } from "@/lib/sbti";
 import { cn } from "@/lib/utils";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import styles from "./SbtiExperience.module.css";
 import { buildSbtiSharePoster, type SbtiPosterCopy } from "./sharePoster";
@@ -53,7 +56,9 @@ function canUseNativeShare(blob: Blob | null, fileName: string) {
 }
 
 export default function SbtiExperience() {
+  const locale = useLocale() as Locale;
   const t = useTranslations("SbtiTest");
+  const sbtiContent = getSbtiContent(locale);
   const [screen, setScreen] = useState<Screen>("intro");
   const [answers, setAnswers] = useState<AnswerMap>({});
   const [questionFlow, setQuestionFlow] = useState<SbtiQuestion[]>([]);
@@ -96,7 +101,30 @@ export default function SbtiExperience() {
     return t("test.dimensionHidden");
   }
 
-  const visibleQuestions = getVisibleQuestions(questionFlow, answers);
+  const resultCopy: SbtiResultCopy = {
+    defaultModeKicker: t("result.mode.defaultKicker"),
+    defaultBadge: (bestNormal) =>
+      t("result.mode.defaultBadge", {
+        similarity: bestNormal.similarity,
+        exact: bestNormal.exact,
+      }),
+    defaultSub: t("result.mode.defaultSub"),
+    drunkModeKicker: t("result.mode.drunkKicker"),
+    drunkBadge: t("result.mode.drunkBadge"),
+    drunkSub: t("result.mode.drunkSub"),
+    fallbackModeKicker: t("result.mode.fallbackKicker"),
+    fallbackBadge: (bestNormal) =>
+      t("result.mode.fallbackBadge", {
+        similarity: bestNormal.similarity,
+      }),
+    fallbackSub: t("result.mode.fallbackSub"),
+  };
+
+  const visibleQuestions = getVisibleQuestions(
+    questionFlow,
+    answers,
+    sbtiContent.specialQuestions
+  );
   const answeredCount = visibleQuestions.filter(
     (question) => answers[question.id] !== undefined
   ).length;
@@ -174,7 +202,9 @@ export default function SbtiExperience() {
     clearSharePoster();
     setAnswers({});
     setResult(null);
-    setQuestionFlow(createQuestionFlow());
+    setQuestionFlow(
+      createQuestionFlow(sbtiContent.questions, sbtiContent.specialQuestions)
+    );
     setScreen("test");
   }
 
@@ -201,7 +231,12 @@ export default function SbtiExperience() {
     }
 
     clearSharePoster();
-    setResult(computeSbtiResult(answers));
+    setResult(
+      computeSbtiResult(answers, {
+        typeLibrary: sbtiContent.typeLibrary,
+        copy: resultCopy,
+      })
+    );
     setScreen("result");
   }
 
@@ -535,11 +570,11 @@ export default function SbtiExperience() {
                 <div className={styles.dimBox}>
                   <h3>{t("result.dimensionsTitle")}</h3>
                   <div className={styles.dimList}>
-                    {sbtiData.dimensionOrder.map((dimension) => (
+                    {sbtiContent.dimensionOrder.map((dimension) => (
                       <div className={styles.dimItem} key={dimension}>
                         <div className={styles.dimItemTop}>
                           <div className={styles.dimItemName}>
-                            {sbtiData.dimensionMeta[dimension].name}
+                            {sbtiContent.dimensionMeta[dimension].name}
                           </div>
                           <div className={styles.dimItemScore}>
                             {result.levels[dimension]} /{" "}
@@ -549,7 +584,7 @@ export default function SbtiExperience() {
                         </div>
                         <p>
                           {
-                            sbtiData.dimExplanations[dimension][
+                            sbtiContent.dimExplanations[dimension][
                               result.levels[dimension]
                             ]
                           }

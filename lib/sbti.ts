@@ -49,6 +49,18 @@ export interface RankedSbtiType extends SbtiTypeProfile, SbtiPatternType {
   similarity: number;
 }
 
+export interface SbtiResultCopy {
+  defaultModeKicker: string;
+  defaultBadge: (bestNormal: RankedSbtiType) => string;
+  defaultSub: string;
+  drunkModeKicker: string;
+  drunkBadge: string;
+  drunkSub: string;
+  fallbackModeKicker: string;
+  fallbackBadge: (bestNormal: RankedSbtiType) => string;
+  fallbackSub: string;
+}
+
 export interface ComputedSbtiResult {
   rawScores: Record<DimensionKey, number>;
   levels: Record<DimensionKey, ScoreLevel>;
@@ -99,26 +111,30 @@ export function shuffleArray<T>(items: T[]): T[] {
   return next;
 }
 
-export function createQuestionFlow(): SbtiQuestion[] {
-  const shuffledRegular = shuffleArray(sbtiData.questions);
+export function createQuestionFlow(
+  questions: SbtiRegularQuestion[] = sbtiData.questions,
+  specialQuestions: SbtiSpecialQuestion[] = sbtiData.specialQuestions
+): SbtiQuestion[] {
+  const shuffledRegular = shuffleArray(questions);
   const insertIndex = Math.floor(Math.random() * shuffledRegular.length) + 1;
 
   return [
     ...shuffledRegular.slice(0, insertIndex),
-    sbtiData.specialQuestions[0],
+    specialQuestions[0],
     ...shuffledRegular.slice(insertIndex),
   ];
 }
 
 export function getVisibleQuestions(
   flow: SbtiQuestion[],
-  answers: AnswerMap
+  answers: AnswerMap,
+  specialQuestions: SbtiSpecialQuestion[] = sbtiData.specialQuestions
 ): SbtiQuestion[] {
   const visible = [...flow];
   const gateIndex = visible.findIndex((question) => question.id === DRINK_GATE_QUESTION_ID);
 
   if (gateIndex !== -1 && answers[DRINK_GATE_QUESTION_ID] === 3) {
-    visible.splice(gateIndex + 1, 0, sbtiData.specialQuestions[1]);
+    visible.splice(gateIndex + 1, 0, specialQuestions[1]);
   }
 
   return visible;
@@ -144,7 +160,30 @@ function parsePattern(pattern: string): ScoreLevel[] {
   return pattern.replace(/-/g, "").split("") as ScoreLevel[];
 }
 
-export function computeSbtiResult(answers: AnswerMap): ComputedSbtiResult {
+const defaultResultCopy: SbtiResultCopy = {
+  defaultModeKicker: "你的主类型",
+  defaultBadge: (bestNormal) =>
+    `匹配度 ${bestNormal.similarity}% · 精准命中 ${bestNormal.exact}/15 维`,
+  defaultSub: "维度命中度较高，当前结果可视为你的第一人格画像。",
+  drunkModeKicker: "隐藏人格已激活",
+  drunkBadge: "匹配度 100% · 酒精异常因子已接管",
+  drunkSub: "乙醇亲和性过强，系统已直接跳过常规人格审判。",
+  fallbackModeKicker: "系统强制兜底",
+  fallbackBadge: (bestNormal) => `标准人格库最高匹配仅 ${bestNormal.similarity}%`,
+  fallbackSub: "标准人格库对你的脑回路集体罢工了，于是系统把你强制分配给了 HHHH。",
+};
+
+interface ComputeSbtiResultOptions {
+  typeLibrary?: Record<string, SbtiTypeProfile>;
+  copy?: SbtiResultCopy;
+}
+
+export function computeSbtiResult(
+  answers: AnswerMap,
+  options: ComputeSbtiResultOptions = {}
+): ComputedSbtiResult {
+  const typeLibrary = options.typeLibrary ?? sbtiData.typeLibrary;
+  const copy = options.copy ?? defaultResultCopy;
   const rawScores = Object.fromEntries(
     sbtiData.dimensionOrder.map((dimension) => [dimension, 0])
   ) as Record<DimensionKey, number>;
@@ -183,7 +222,7 @@ export function computeSbtiResult(answers: AnswerMap): ComputedSbtiResult {
 
       return {
         ...type,
-        ...sbtiData.typeLibrary[type.code],
+        ...typeLibrary[type.code],
         distance,
         exact,
         similarity,
@@ -205,24 +244,24 @@ export function computeSbtiResult(answers: AnswerMap): ComputedSbtiResult {
   const drunkTriggered = answers[DRUNK_TRIGGER_QUESTION_ID] === 2;
 
   let finalType: SbtiTypeProfile = bestNormal;
-  let modeKicker = "你的主类型";
-  let badge = `匹配度 ${bestNormal.similarity}% · 精准命中 ${bestNormal.exact}/15 维`;
-  let sub = "维度命中度较高，当前结果可视为你的第一人格画像。";
+  let modeKicker = copy.defaultModeKicker;
+  let badge = copy.defaultBadge(bestNormal);
+  let sub = copy.defaultSub;
   let special = false;
   let secondaryType: RankedSbtiType | null = null;
 
   if (drunkTriggered) {
-    finalType = sbtiData.typeLibrary.DRUNK;
+    finalType = typeLibrary.DRUNK;
     secondaryType = bestNormal;
-    modeKicker = "隐藏人格已激活";
-    badge = "匹配度 100% · 酒精异常因子已接管";
-    sub = "乙醇亲和性过强，系统已直接跳过常规人格审判。";
+    modeKicker = copy.drunkModeKicker;
+    badge = copy.drunkBadge;
+    sub = copy.drunkSub;
     special = true;
   } else if (bestNormal.similarity < 60) {
-    finalType = sbtiData.typeLibrary.HHHH;
-    modeKicker = "系统强制兜底";
-    badge = `标准人格库最高匹配仅 ${bestNormal.similarity}%`;
-    sub = "标准人格库对你的脑回路集体罢工了，于是系统把你强制分配给了 HHHH。";
+    finalType = typeLibrary.HHHH;
+    modeKicker = copy.fallbackModeKicker;
+    badge = copy.fallbackBadge(bestNormal);
+    sub = copy.fallbackSub;
     special = true;
   }
 
