@@ -1,6 +1,7 @@
 import { Aside } from "@/components/mdx/Aside";
 import { Callout } from "@/components/mdx/Callout";
 import { MdxCard } from "@/components/mdx/MdxCard";
+import { SbtiTypeDirectory } from "@/components/sbti/SbtiTypeDirectory";
 import React, { ReactNode } from "react";
 
 interface HeadingProps {
@@ -120,6 +121,7 @@ const MDXComponents: MDXComponentsProps = {
   Aside,
   Callout,
   Card: MdxCard,
+  SbtiTypeDirectory,
 };
 
 export default MDXComponents;

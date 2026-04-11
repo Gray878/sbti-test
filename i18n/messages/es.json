@@ -227,6 +227,7 @@
         "fallbackBadge": "La mejor coincidencia con la biblioteca estándar es solo del {similarity}%",
         "fallbackSub": "La biblioteca de personalidades estándar renunció colectivamente a entender el cableado de tu cerebro, así que el sistema te empujó hacia HHHH."
       },
+      "typePageButton": "Ver página del tipo",
       "retestButton": "Repetir test",
       "backButton": "Volver al inicio"
     }

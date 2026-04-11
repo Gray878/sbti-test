@@ -1,7 +1,7 @@
 "use client";
 
 import StructuredData from "@/components/StructuredData";
-import { Locale } from "@/i18n/routing";
+import { Link, Locale } from "@/i18n/routing";
 import { getSbtiContent } from "@/lib/sbti-content";
 import {
   AnswerMap,
@@ -13,6 +13,7 @@ import {
   getVisibleQuestions,
   sbtiData,
 } from "@/lib/sbti";
+import { getSbtiTypeHref } from "@/lib/sbti-type-routes";
 import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
@@ -140,6 +141,7 @@ export default function SbtiExperience() {
   };
   const posterFileName = buildPosterFileName(result?.finalType.code ?? "result");
   const nativeShareAvailable = canUseNativeShare(sharePosterBlob, posterFileName);
+  const typePageHref = result ? getSbtiTypeHref(result.finalType.code) : null;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -618,6 +620,14 @@ export default function SbtiExperience() {
 
               <div className={styles.resultActions}>
                 <div className={styles.actionGroup}>
+                  {typePageHref && (
+                    <Link
+                      className={cn(styles.btn, styles.btnSecondary)}
+                      href={typePageHref}
+                    >
+                      {t("result.typePageButton")}
+                    </Link>
+                  )}
                   <button
                     className={cn(styles.btn, styles.btnSecondary)}
                     onClick={startTest}

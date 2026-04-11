@@ -227,6 +227,7 @@
         "fallbackBadge": "Best standard-library match only {similarity}%",
         "fallbackSub": "The standard personality library collectively gave up on your brain wiring, so the system shoved you into HHHH instead."
       },
+      "typePageButton": "View Type Page",
       "retestButton": "Retake Test",
       "backButton": "Back to Home"
     }

@@ -227,6 +227,7 @@
         "fallbackBadge": "標準人格ライブラリ最高一致でも {similarity}%",
         "fallbackSub": "標準人格ライブラリがあなたの脳回路に一斉ストライキを起こしたので、システムは HHHH を強制配布しました。"
       },
+      "typePageButton": "タイプページを見る",
       "retestButton": "再テスト",
       "backButton": "ホームに戻る"
     }

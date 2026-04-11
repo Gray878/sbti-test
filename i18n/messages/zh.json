@@ -227,6 +227,7 @@
         "fallbackBadge": "标准人格库最高匹配仅 {similarity}%",
         "fallbackSub": "标准人格库对你的脑回路集体罢工了，于是系统把你强制分配给了 HHHH。"
       },
+      "typePageButton": "查看类型页",
       "retestButton": "重新测试",
       "backButton": "回到首页"
     }
