@@ -131,9 +131,9 @@ Built-in comprehensive SEO features:
 
 Enable analytics by adding IDs in `.env`:
 ```
-NEXT_PUBLIC_GOOGLE_ANALYTICS=
+NEXT_PUBLIC_GOOGLE_ID=
 NEXT_PUBLIC_BAIDU_TONGJI=
-NEXT_PUBLIC_GOOGLE_ADSENSE=
+NEXT_PUBLIC_GOOGLE_ADSENSE_ID=ca-pub-5179726601717046
 ```
 
 ## 📁 Project Structure
