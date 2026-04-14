@@ -17,6 +17,7 @@ import { getSbtiTypeHref } from "@/lib/sbti-type-routes";
 import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import SbtiHeroTypeWall from "./SbtiHeroTypeWall";
 import styles from "./SbtiExperience.module.css";
 import { buildSbtiSharePoster, type SbtiPosterCopy } from "./sharePoster";
 
@@ -322,17 +323,25 @@ export default function SbtiExperience() {
           <>
             <section id="sbti-home">
               <div className={cn(styles.card, styles.hero, styles.heroMinimal)}>
-                <h1>{t("hero.title")}</h1>
-                <div
-                  className={cn(styles.heroActions, styles.heroActionsSingle)}
-                >
-                  <button
-                    className={cn(styles.btn, styles.btnPrimary)}
-                    onClick={startTest}
-                    type="button"
-                  >
-                    {t("hero.startButton")}
-                  </button>
+                <SbtiHeroTypeWall />
+                <div className={styles.heroContent}>
+                  <div className={styles.heroCopyPanel}>
+                    <h1>{t("hero.title")}</h1>
+                    <div
+                      className={cn(
+                        styles.heroActions,
+                        styles.heroActionsSingle
+                      )}
+                    >
+                      <button
+                        className={cn(styles.btn, styles.btnPrimary)}
+                        onClick={startTest}
+                        type="button"
+                      >
+                        {t("hero.startButton")}
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
