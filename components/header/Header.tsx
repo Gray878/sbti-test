@@ -11,7 +11,7 @@ const Header = () => {
   const t = useTranslations("Home");
 
   return (
-    <header className="py-2 px-6 backdrop-blur-md sticky top-0 z-50">
+    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/95 px-6 py-2">
       <nav className="flex justify-between items-center w-full mx-auto">
         <div className="flex items-center space-x-6 md:space-x-12">
           <I18nLink

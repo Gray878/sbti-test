@@ -47,6 +47,8 @@ export async function generateMetadata({
       "personality test",
       "test de personalidad",
       "prueba de personalidad",
+      "Persoenlichkeitstest",
+      "SBTI Persoenlichkeitstest",
     ],
   });
 }

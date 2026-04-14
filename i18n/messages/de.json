@@ -1,0 +1,252 @@
+{
+  "LanguageDetection": {
+    "title": "Sprachvorschlag",
+    "description": "Wir haben bemerkt, dass deine Browsersprache nicht mit der aktuellen Seitensprache uebereinstimmt. Du kannst die Sprache jederzeit wechseln.",
+    "countdown": "Schliesst in {countdown} Sekunden",
+    "switchTo": "Wechseln zu",
+    "dismiss": "Sprachvorschlag schliessen"
+  },
+  "Header": {
+    "links": [
+      {
+        "name": "Einfuehrung",
+        "href": "/blog"
+      },
+      {
+        "name": "Ueber",
+        "href": "/about"
+      }
+    ]
+  },
+  "Footer": {
+    "Copyright": "Copyright {year} {name}. Alle Rechte vorbehalten.",
+    "PrivacyPolicy": "Datenschutz",
+    "TermsOfService": "Nutzungsbedingungen",
+    "Links": {
+      "groups": [
+        {
+          "title": "Sprachen",
+          "links": [
+            {
+              "href": "/",
+              "name": "Chinese",
+              "useA": true
+            },
+            {
+              "href": "/en",
+              "name": "English",
+              "useA": true
+            },
+            {
+              "href": "/ja",
+              "name": "Japanese",
+              "useA": true
+            },
+            {
+              "href": "/es",
+              "name": "Espanol",
+              "useA": true
+            },
+            {
+              "href": "/de",
+              "name": "Deutsch",
+              "useA": true
+            }
+          ]
+        },
+        {
+          "title": "Website",
+          "links": [
+            {
+              "href": "/blog",
+              "name": "Blog"
+            },
+            {
+              "href": "/about",
+              "name": "Ueber"
+            }
+          ]
+        }
+      ]
+    },
+    "Newsletter": {
+      "title": "Newsletter abonnieren",
+      "description": "Erhalte Updates, wenn die SBTI-Seite neue Inhalte veroeffentlicht.",
+      "defaultErrorMessage": "Bitte gib eine gueltige E-Mail-Adresse ein",
+      "successMessage": "Anmeldung erfolgreich",
+      "errorMessage": "Anmeldung fehlgeschlagen",
+      "errorMessage2": "Anmeldung fehlgeschlagen. Bitte versuche es spaeter erneut.",
+      "subscribe": "Abonnieren",
+      "subscribing": "Wird abonniert...",
+      "subscribed": "Anmeldung erfolgreich. Danke fuer dein Interesse."
+    }
+  },
+  "Home": {
+    "title": "SBTI Persoenlichkeitstest",
+    "tagLine": "Persoenlichkeitstest",
+    "description": "SBTI ist ein unterhaltungsorientierter Persoenlichkeitstest auf Basis von 15 Dimensionen mit 27 Persoenlichkeitstypen wie CTRL, BOSS und DRUNK. Mit internetnahen chinesischen Namen, versteckten Persoenlichkeiten und besonderen Mechaniken brauchst du nur 5 bis 10 Minuten fuer dein exklusives Persoenlichkeitsposter und eine ausfuehrliche Analyse.",
+    "blogCta": "Einfuehrung ansehen"
+  },
+  "Blog": {
+    "title": "Blogbeitraege",
+    "description": "Eine Liste von Blogbeitraegen"
+  },
+  "About": {
+    "title": "Ueber",
+    "description": "Ueber diese Website"
+  },
+  "TermsOfService": {
+    "title": "Nutzungsbedingungen",
+    "description": "Nutzungsbedingungen"
+  },
+  "PrivacyPolicy": {
+    "title": "Datenschutz",
+    "description": "Datenschutz"
+  },
+  "Showcase": {
+    "title": "Mit diesem Starter gebaut",
+    "description": "Entdecke Produkte und Websites, die mit diesem Next.js-Starter erstellt wurden.",
+    "visitSite": "Website besuchen"
+  },
+  "Submission": {
+    "badge": "Vorgestellt werden",
+    "title": "Produkt einreichen",
+    "description": "Etwas mit diesem Starter gebaut? Teile dein Produkt mit der Community.",
+    "productNameLabel": "Produktname",
+    "productNamePlaceholder": "Mein tolles Projekt",
+    "productUrlLabel": "Produkt-URL",
+    "submit": "Produkt einreichen",
+    "submitting": "Wird eingereicht...",
+    "successMessage": "Danke. Deine Einreichung wurde erhalten.",
+    "errorMessage": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+  },
+  "SbtiTest": {
+    "hero": {
+      "title": "MBTI ist ueberholt, SBTI ist da.",
+      "startButton": "Test starten"
+    },
+    "intro": {
+      "whatIs": {
+        "title": "Was ist der SBTI Persoenlichkeitstest?",
+        "p1": "SBTI ist ein unterhaltungsorientierter Persoenlichkeitstest auf Basis von 15 Dimensionen mit 30 regulaeren Fragen, 2 Sonderfragen und insgesamt 27 Persoenlichkeitstypen. Anders als das traditionelle MBTI nutzt SBTI internetnahe chinesische Bezeichnungen wie CTRL, BOSS oder DRUNK, die bei juengeren Generationen staerker ankommen.",
+        "p2": "Der Test enthaelt die versteckte Persoenlichkeit DRUNK, die ueber Sonderfragen ausgeloest wird, sowie die Fallback-Persoenlichkeit HHHH, wenn die Standardzuordnung zu niedrig ist. Dadurch steckt im gesamten Test viel Spiel, Neugier und Entdeckung."
+      },
+      "features": {
+        "title": "Merkmale des SBTI-Tests",
+        "f1": {
+          "title": "15 Kerndimensionen",
+          "desc": "Deckt Bereiche wie Selbstbild, Emotion, Haltung, Handlung und soziale Interaktion ab"
+        },
+        "f2": {
+          "title": "27 Persoenlichkeitstypen",
+          "desc": "Von CTRL bis DEAD besitzt jeder Typ sein eigenes Profil"
+        },
+        "f3": {
+          "title": "Versteckte Mechaniken",
+          "desc": "Enthaelt speziell ausgeloeste versteckte Persoenlichkeiten und System-Fallbacks"
+        },
+        "f4": {
+          "title": "Visuelle Ergebnisse",
+          "desc": "Jede Persoenlichkeit hat ein eigenes Poster und eine ausfuehrliche Interpretation"
+        },
+        "f5": {
+          "title": "Unterhaltungsfokus",
+          "desc": "Nutzen von Internet-Meme-Kultur und Slang-Namen, leicht merkbar und gut teilbar"
+        }
+      }
+    },
+    "faq": {
+      "title": "Haeufige Fragen",
+      "q1": {
+        "question": "Wie lange dauert der SBTI-Test?",
+        "answer": "Normalerweise 5 bis 10 Minuten. Der Test umfasst 30 regulaere Fragen und bis zu 2 Sonderfragen. Antworte am besten in ruhiger Umgebung nach dem ersten Impuls und ohne zu viel Nachdenken."
+      },
+      "q2": {
+        "question": "Was ist der Unterschied zwischen SBTI und MBTI?",
+        "answer": "MBTI ist ein professioneller Persoenlichkeitstest auf Grundlage der jungianischen Psychologie. SBTI ist dagegen klar auf Unterhaltung ausgerichtet. SBTI verwendet alltagsnaehere chinesische Internetbegriffe, direktere Namen und ist staerker auf Spass und Teilen ausgelegt. Es sollte nicht als professionelle psychologische Bewertung genutzt werden."
+      },
+      "q3": {
+        "question": "Was ist die versteckte Persoenlichkeit DRUNK?",
+        "answer": "DRUNK ist eine versteckte Easter-Egg-Persoenlichkeit, die ueber bestimmte alkoholbezogene Sonderfragen ausgeloest wird. Sie gehoert nicht zu den 25 Standardtypen, sondern ist ein Spezialmechanismus, der den Zustand 'Alkohol uebernimmt das System' ueberzeichnet darstellt."
+      },
+      "q4": {
+        "question": "Warum ist mein Ergebnis HHHH?",
+        "answer": "HHHH ist die Fallback-Persoenlichkeit des Systems. Wenn dein Antwortmuster deutlich vom Standard-Persoenlichkeitskatalog abweicht und nicht sauber eingeordnet werden kann, bekommst du dieses Ergebnis. Das bedeutet, dass deine Merkmale ziemlich speziell sind und nicht gut in die vorhandenen Standardschemata passen."
+      },
+      "q5": {
+        "question": "Ist das SBTI-Ergebnis genau?",
+        "answer": "SBTI ist ein Unterhaltungstest und hat nicht die Genauigkeit oder Strenge professioneller psychologischer Verfahren. Er ist eher wie ein ueberzeichneter Spiegel fuer bestimmte Persoenlichkeitsaspekte. Bitte nutze das Ergebnis nicht fuer medizinische Diagnosen, Karriereplanung, Menschenbeurteilungen oder andere ernste Kontexte."
+      },
+      "q6": {
+        "question": "Kann ich den Test erneut machen?",
+        "answer": "Ja. Es ist aber besser, etwas Abstand zwischen zwei Versuchen zu lassen, weil sehr kurze Wiederholungen leicht von Erinnerung beeinflusst werden. Ergebnisse koennen je nach Zeitpunkt und Stimmung schwanken, und genau das gehoert bei solchen Tests auch zum Spass dazu."
+      },
+      "q7": {
+        "question": "Welche 27 Persoenlichkeitstypen gibt es?",
+        "answer": "Dazu gehoeren: CTRL, ATM-er, Dior-s, BOSS, THAN-K, OH-NO, GOGO, SEXY, LOVE-R, MUM, FAKE, OJBK, MALO, JOKE-R, WOC!, THIN-K, SHIT, ZZZZ, POOR, MONK, IMSB, SOLO, FUCK, DEAD, IMFW, HHHH und DRUNK."
+      }
+    },
+    "test": {
+      "questionNumber": "Frage {number}",
+      "specialQuestion": "Zusatzfrage",
+      "dimensionHidden": "Dimension verborgen",
+      "hintComplete": "Alles erledigt. Jetzt kannst du deine digitale Seele auf der Ergebnisseite beurteilen lassen.",
+      "hintIncomplete": "Beantworte erst alle Fragen. Die Welt ist chaotisch genug, wenigstens den Test solltest du zu Ende bringen.",
+      "backButton": "Zurueck zur Startseite",
+      "submitButton": "Absenden und Ergebnis ansehen"
+    },
+    "result": {
+      "analysisTitle": "Kurze Deutung dieser Persoenlichkeit",
+      "dimensionsTitle": "Fuenfzehn Dimensionswerte",
+      "scoreUnit": " Punkte",
+      "noteTitle": "Hinweis",
+      "funNote": "Dieser Test dient nur der Unterhaltung. Bitte behandle ihn nicht als Diagnose, Interview, Dating-Hilfe, Trennungsorakel, Spiritismus, Wahrsagerei oder Lebensurteil. Du darfst lachen, aber nimm ihn nicht zu ernst.",
+      "specialNote": "Dieser Test dient nur der Unterhaltung. Versteckte Persoenlichkeiten und erzwungene Fallbacks sind bewusst eingebaute Tricks des Autors. Bitte nutze das nicht als Grundlage fuer Medizin, Psychologie, Physiognomie, Numerologie oder paranormale Deutungen.",
+      "authorTitle": "Worte des Autors",
+      "authorNote1": "Dieser Test wurde zuerst vom Bilibili-UP-Creator Qurouer Chuaner (UID 417038183) veroeffentlicht und sollte urspruenglich einen Freund vom Trinken abbringen.",
+      "authorNote2": "Da die Persoenlichkeit des Autors SHIT ist, hat er gleichmaessig gegen alle ausgeteilt und entschuldigt sich dafuer. Aber ich bin atemberaubend huebsch, also wirst du mir sicher verzeihen. Auf Bilibili kannst du mir auch folgen.",
+      "authorNote3": "Bei diesem Test konnte ich Unterhaltung und Professionalitaet nicht perfekt ausbalancieren, daher sind manche Interpretationen vage oder ungenau. Falls ich jemanden verletzt habe, tut mir das leid.",
+      "authorNote4": "Mit begrenzter Zeit und Energie spielen wir erstmal damit herum und verbessern spaeter Schritt fuer Schritt weiter. Kurz gesagt: Spass steht im Mittelpunkt, bitte nutzt das nicht kommerziell.",
+      "shareButton": "Poster erstellen",
+      "shareButtonLoading": "Poster wird erstellt...",
+      "shareSheetTitle": "Ergebnis teilen",
+      "shareSheetHint": "Wird im mobilen Posterformat erzeugt, damit du es speichern und weiterteilen kannst.",
+      "shareSheetLongPressHint": "Auf dem Smartphone kannst du das Poster durch langes Druecken speichern. Wenn dein Browser es unterstuetzt, kannst du auch die Systemfreigabe nutzen.",
+      "savePosterButton": "Poster speichern",
+      "systemShareButton": "Systemfreigabe",
+      "closeShareButton": "Teilen-Fenster schliessen",
+      "shareError": "Das Poster konnte nicht erzeugt werden. Bitte versuche es erneut.",
+      "nativeShareError": "Systemfreigabe fehlgeschlagen. Speichere das Bild zuerst und teile es dann manuell.",
+      "posterTitle": "Dein SBTI-Ergebnis",
+      "posterSummaryTitle": "Schnellueberblick",
+      "posterDimensionsTitle": "Top-Dimensionen",
+      "posterFooter": "SBTI Persoenlichkeitstest",
+      "mode": {
+        "defaultKicker": "Haupttyp",
+        "defaultBadge": "Uebereinstimmung {similarity}% | Exakte Treffer {exact}/15",
+        "defaultSub": "Dein Dimensionsprofil passt ziemlich gut dazu, deshalb kann es als primaeres Persoenlichkeitsbild gelesen werden.",
+        "drunkKicker": "Versteckter Typ aktiviert",
+        "drunkBadge": "Uebereinstimmung 100% | Alkohol-Anomaliefaktor hat uebernommen",
+        "drunkSub": "Deine Ethanol-Affinitaet ist viel zu hoch, deshalb hat das System die normale Persoenlichkeitspruefung komplett uebersprungen.",
+        "fallbackKicker": "Erzwungener Fallback",
+        "fallbackBadge": "Beste Standard-Uebereinstimmung nur {similarity}%",
+        "fallbackSub": "Die Standard-Persoenlichkeitsbibliothek hat bei deiner Hirnverdrahtung kollektiv aufgegeben und dich stattdessen in HHHH gesteckt."
+      },
+      "typePageButton": "Typseite ansehen",
+      "retestButton": "Test wiederholen",
+      "backButton": "Zurueck zur Startseite"
+    }
+  },
+  "Unsubscribe": {
+    "title": "E-Mail-Abonnement verwalten",
+    "successMessage": "Du wurdest erfolgreich von E-Mail-Benachrichtigungen abgemeldet.",
+    "emailLabel": "E-Mail:",
+    "resubscribeHint": "Wenn du es dir anders ueberlegst, kannst du dich jederzeit erneut anmelden.",
+    "supportHint": "Bitte stelle sicher, dass du den richtigen Abmeldelink verwendet hast, oder kontaktiere unser Support-Team.",
+    "genericError": "Beim Verarbeiten deiner Abmeldung ist ein Fehler aufgetreten.",
+    "missingToken": "Es wurde kein Abmelde-Token uebergeben.",
+    "invalidEmail": "Der Abmeldelink ist ungueltig.",
+    "notSubscribed": "Diese E-Mail ist nicht fuer unsere Benachrichtigungen angemeldet.",
+    "tooManyRequests": "Zu viele Anfragen. Bitte versuche es spaeter erneut."
+  }
+}

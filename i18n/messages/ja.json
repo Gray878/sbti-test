@@ -46,6 +46,11 @@
               "href": "/es",
               "name": "Espa?ol",
               "useA": true
+            },
+            {
+              "href": "/de",
+              "name": "Deutsch",
+              "useA": true
             }
           ]
         },

@@ -28,16 +28,18 @@ export async function generateMetadata({
   params,
 }: MetadataProps): Promise<Metadata> {
   const { locale, slug } = await params;
-  let { posts }: { posts: BlogPost[] } = await getPosts(locale);
-  const post = posts.find((post) => post.slug === "/" + slug);
+  const { posts }: { posts: BlogPost[] } = await getPosts(locale);
+  const post = posts.find((entry) => entry.slug === `/${slug}`);
   const notFoundDescription =
     locale === "zh"
       ? "页面未找到"
       : locale === "ja"
         ? "ページが見つかりません"
         : locale === "es"
-          ? "Página no encontrada"
-          : "Page not found";
+      ? "Pagina no encontrada"
+      : locale === "de"
+        ? "Seite nicht gefunden"
+        : "Page not found";
 
   if (!post) {
     return constructMetadata({
@@ -63,27 +65,26 @@ export async function generateMetadata({
 
 export default async function BlogPage({ params }: { params: Params }) {
   const { locale, slug } = await params;
-  let { posts }: { posts: BlogPost[] } = await getPosts(locale);
-
-  const post = posts.find((item) => item.slug === "/" + slug);
+  const { posts }: { posts: BlogPost[] } = await getPosts(locale);
+  const post = posts.find((item) => item.slug === `/${slug}`);
 
   if (!post) {
     return notFound();
   }
 
   return (
-    <div className="w-full md:w-3/5 px-2 md:px-12">
-      <h1 className="break-words text-4xl font-bold mt-6 mb-4">{post.title}</h1>
+    <div className="w-full px-2 md:w-3/5 md:px-12">
+      <h1 className="mt-6 mb-4 break-words text-4xl font-bold">{post.title}</h1>
       {post.image && (
-        <img src={post.image} alt={post.title} className="rounded-sm" />
+        <img alt={post.title} className="rounded-sm" src={post.image} />
       )}
       {post.tags && post.tags.split(",").length ? (
         <div className="flex flex-wrap gap-2">
           {post.tags.split(",").map((tag) => {
             return (
               <div
+                className="flex rounded-md bg-gray-200 px-2.5 py-1.5 text-sm font-medium text-gray-500 outline-none transition hover:!no-underline hover:text-black focus-visible:ring dark:bg-[#24272E] dark:text-[#7F818C] hover:dark:bg-[#15AFD04C] hover:dark:text-[#82E9FF]"
                 key={tag}
-                className={`rounded-md bg-gray-200 hover:!no-underline dark:bg-[#24272E] flex px-2.5 py-1.5 text-sm font-medium transition-colors hover:text-black hover:dark:bg-[#15AFD04C] hover:dark:text-[#82E9FF] text-gray-500 dark:text-[#7F818C] outline-none focus-visible:ring transition`}
               >
                 {tag.trim()}
               </div>
@@ -95,9 +96,9 @@ export default async function BlogPage({ params }: { params: Params }) {
       )}
       {post.description && <Callout>{post.description}</Callout>}
       <MDXRemote
-        source={post?.content || ""}
         components={MDXComponents}
         options={mdxOptions}
+        source={post.content || ""}
       />
     </div>
   );

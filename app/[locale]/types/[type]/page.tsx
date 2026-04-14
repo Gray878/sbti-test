@@ -33,10 +33,10 @@ const TYPE_PAGE_COPY: Record<
     analysisTitle: "What this type usually signals",
     noteTitle: "About this page",
     noteBody:
-      "This is a permanent introduction page for this personality type, showing general characteristics. It's not your personal test result. Want to see yours? Take the test on the homepage.",
+      "This is a permanent introduction page for this personality type, showing general characteristics. It is not your personal test result. Want to see yours? Take the test on the homepage.",
     guideTitle: "Reading path",
     guideBody:
-      "Want a quick overview of this personality? This page has you covered. Want to dive deep into test mechanics, hidden personalities, and the full question bank? Check out the complete guide in the blog.",
+      "Want a quick overview of this personality? This page has you covered. Want to dive deeper into test mechanics, hidden personalities, and the full question bank? Check out the complete guide in the blog.",
     startTestLabel: "Start the test",
     guideLabel: "Read the full guide",
     relatedTitle: "Explore more types",
@@ -46,12 +46,12 @@ const TYPE_PAGE_COPY: Record<
     analysisTitle: "这个人格通常意味着什么",
     noteTitle: "关于这个页面",
     noteBody:
-      "这是一个固定的人格介绍页面，展示的是这个人格类型的通用特征，不是你个人的测试结果。想看自己的结果？去首页做测试吧。",
+      "这是一个固定的人格介绍页面，展示的是这一人格类型的通用特征，不是你的个人测试结果。想看你自己的结果？去首页做测试吧。",
     guideTitle: "推荐阅读路径",
     guideBody:
-      "想快速了解这个人格？看这个页面就够了。想深入了解测试机制、隐藏人格和完整题库？去看博客里的完整指南。",
+      "想快速了解这个人格？看这页就够了。想深入了解测试机制、隐藏人格和完整题库？去博客里看完整版指南。",
     startTestLabel: "开始测试",
-    guideLabel: "查看完整指南",
+    guideLabel: "查看完整版指南",
     relatedTitle: "继续看其他人格",
   },
   ja: {
@@ -59,26 +59,39 @@ const TYPE_PAGE_COPY: Record<
     analysisTitle: "このタイプが示しやすい傾向",
     noteTitle: "このページについて",
     noteBody:
-      "これはこの性格タイプの固定紹介ページで、一般的な特徴を示しています。あなた個人のテスト結果ではありません。自分の結果を見たい？ホームページでテストを受けてください。",
+      "これはこの性格タイプの恒久的な紹介ページで、一般的な特徴をまとめたものです。あなた個人のテスト結果ではありません。自分の結果を見たいなら、ホームでテストを受けてください。",
     guideTitle: "おすすめの読み方",
     guideBody:
-      "この性格をざっくり知りたい？このページで十分です。テストの仕組み、隠し性格、全問題を深く知りたい？ブログの完全ガイドをチェックしてください。",
+      "この性格をさっと知りたいならこのページで十分です。テストの仕組み、隠し人格、質問全体まで深く知りたいなら、ブログの完全ガイドを読んでください。",
     startTestLabel: "テストを始める",
     guideLabel: "完全ガイドを読む",
-    relatedTitle: "他のタイプも見る",
+    relatedTitle: "ほかのタイプを見る",
   },
   es: {
-    eyebrow: "Página de tipo SBTI",
-    analysisTitle: "Qué suele indicar este tipo",
-    noteTitle: "Sobre esta página",
+    eyebrow: "Pagina de tipo SBTI",
+    analysisTitle: "Que suele indicar este tipo",
+    noteTitle: "Sobre esta pagina",
     noteBody:
-      "Esta es una página de introducción permanente para este tipo de personalidad, mostrando características generales. No es tu resultado personal. ¿Quieres ver el tuyo? Haz el test en la página principal.",
+      "Esta es una pagina de introduccion permanente para este tipo de personalidad y muestra rasgos generales. No es tu resultado personal. Quieres ver el tuyo? Haz el test en la pagina principal.",
     guideTitle: "Ruta de lectura",
     guideBody:
-      "¿Quieres una visión rápida de esta personalidad? Esta página es suficiente. ¿Quieres profundizar en la mecánica del test, personalidades ocultas y el banco completo de preguntas? Consulta la guía completa en el blog.",
+      "Quieres una vision rapida de esta personalidad? Esta pagina es suficiente. Quieres profundizar en la mecanica del test, las personalidades ocultas y el banco completo de preguntas? Consulta la guia completa en el blog.",
     startTestLabel: "Empezar el test",
-    guideLabel: "Leer la guía completa",
-    relatedTitle: "Explorar más tipos",
+    guideLabel: "Leer la guia completa",
+    relatedTitle: "Explorar mas tipos",
+  },
+  de: {
+    eyebrow: "SBTI-Typseite",
+    analysisTitle: "Was dieser Typ meist signalisiert",
+    noteTitle: "Ueber diese Seite",
+    noteBody:
+      "Dies ist eine dauerhafte Einfuehrungsseite fuer diesen Persoenlichkeitstyp und zeigt allgemeine Merkmale. Sie ist nicht dein persoenliches Testergebnis. Willst du dein eigenes Ergebnis sehen? Dann mach den Test auf der Startseite.",
+    guideTitle: "Lesepfad",
+    guideBody:
+      "Du willst einen schnellen Ueberblick ueber diesen Typ? Dann reicht diese Seite. Du willst tiefer in Testlogik, versteckte Persoenlichkeiten und den kompletten Fragenkatalog einsteigen? Dann lies den vollstaendigen Guide im Blog.",
+    startTestLabel: "Test starten",
+    guideLabel: "Vollstaendigen Guide lesen",
+    relatedTitle: "Weitere Typen entdecken",
   },
 };
 
@@ -255,9 +268,9 @@ export default async function SbtiTypePage({
 
               return (
                 <a
-                  key={relatedCode}
                   className="rounded-xl border border-black/10 bg-neutral-50 px-4 py-4 no-underline transition hover:border-black/20 hover:bg-neutral-100"
                   href={getLocalizedSbtiTypeHref(resolvedLocale, relatedCode)}
+                  key={relatedCode}
                 >
                   <div className="text-sm uppercase tracking-[0.18em] text-neutral-500">
                     {relatedProfile.code}

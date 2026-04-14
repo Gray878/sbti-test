@@ -1,4 +1,5 @@
 import { Locale } from "@/i18n/routing";
+import { DE_CONTENT } from "@/lib/sbti-content-de";
 import { ES_CONTENT } from "@/lib/sbti-content-es";
 import {
   DimensionKey,
@@ -992,6 +993,8 @@ export function getSbtiContent(locale: Locale): SbtiLocalizedContent {
   switch (locale) {
     case "en":
       return EN_CONTENT;
+    case "de":
+      return DE_CONTENT;
     case "es":
       return ES_CONTENT;
     case "ja":
