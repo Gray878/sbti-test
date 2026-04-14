@@ -1,4 +1,6 @@
-import type { CSSProperties } from "react";
+"use client";
+
+import { useEffect, useState, type CSSProperties } from "react";
 import { sbtiData } from "@/lib/sbti";
 import styles from "./SbtiExperience.module.css";
 
@@ -109,10 +111,42 @@ const HERO_COLUMNS = HERO_COLUMN_CONFIGS.map((config, columnIndex) => ({
   ),
 }));
 
+const INITIAL_VISIBLE_IMAGE_COUNT = 2;
+const INITIAL_LOOP_COUNT = 1;
+const FULL_LOOP_COUNT = 2;
+
 export default function SbtiHeroTypeWall() {
+  const [showFullWall, setShowFullWall] = useState(false);
+
+  useEffect(() => {
+    const revealFullWall = () => {
+      setShowFullWall(true);
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      const idleId = window.requestIdleCallback(revealFullWall, {
+        timeout: 1200,
+      });
+
+      return () => {
+        window.cancelIdleCallback(idleId);
+      };
+    }
+
+    const timeoutId = window.setTimeout(revealFullWall, 400);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <div aria-hidden="true" className={styles.heroBackdrop}>
       {HERO_COLUMNS.map((column, columnIndex) => {
+        const visibleImages = showFullWall
+          ? column.images
+          : column.images.slice(0, INITIAL_VISIBLE_IMAGE_COUNT);
+        const loopCount = showFullWall ? FULL_LOOP_COUNT : INITIAL_LOOP_COUNT;
         const columnStyle = {
           "--hero-drift": column.drift,
           "--hero-duration": `${column.duration}s`,
@@ -133,27 +167,34 @@ export default function SbtiHeroTypeWall() {
             style={columnStyle}
           >
             <div className={styles.heroColumnTrack}>
-              {Array.from({ length: 2 }).map((_, loopIndex) => (
+              {Array.from({ length: loopCount }).map((_, loopIndex) => (
                 <div
                   className={styles.heroColumnSet}
                   key={`hero-column-set-${columnIndex}-${loopIndex}`}
                 >
-                  {column.images.map((image, imageIndex) => (
-                    <div
-                      className={styles.heroCard}
-                      key={`${image.code}-${loopIndex}-${imageIndex}`}
-                    >
-                      <img
-                        alt=""
-                        className={styles.heroCardImage}
-                        decoding="async"
-                        draggable="false"
-                        fetchPriority="low"
-                        loading="lazy"
-                        src={image.src}
-                      />
-                    </div>
-                  ))}
+                  {visibleImages.map((image, imageIndex) => {
+                    const shouldPrioritizeImage =
+                      !showFullWall &&
+                      loopIndex === 0 &&
+                      imageIndex < INITIAL_VISIBLE_IMAGE_COUNT;
+
+                    return (
+                      <div
+                        className={styles.heroCard}
+                        key={`${image.code}-${loopIndex}-${imageIndex}`}
+                      >
+                        <img
+                          alt=""
+                          className={styles.heroCardImage}
+                          decoding="async"
+                          draggable="false"
+                          fetchPriority={shouldPrioritizeImage ? "auto" : "low"}
+                          loading={shouldPrioritizeImage ? "eager" : "lazy"}
+                          src={image.src}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
               ))}
             </div>
