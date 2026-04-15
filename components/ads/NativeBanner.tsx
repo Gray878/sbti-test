@@ -5,7 +5,6 @@ interface NativeBannerProps {
 }
 
 export default function NativeBanner({ className = "" }: NativeBannerProps) {
-  // Native Banner ad code
   const adHTML = `
     <!DOCTYPE html>
     <html>
@@ -13,9 +12,11 @@ export default function NativeBanner({ className = "" }: NativeBannerProps) {
       <style>
         body { 
           margin: 0; 
-          padding: 0; 
-          overflow: hidden;
+          padding: 0;
           background: transparent;
+        }
+        #container-a14bbb8c8065c94639c6829cdf911920:empty {
+          display: none;
         }
       </style>
     </head>
@@ -31,19 +32,17 @@ export default function NativeBanner({ className = "" }: NativeBannerProps) {
   `;
 
   return (
-    <div className={className}>
-      <iframe
-        srcDoc={adHTML}
-        style={{
-          width: "100%",
-          minHeight: "250px",
-          border: "none",
-          overflow: "hidden",
-        }}
-        scrolling="no"
-        frameBorder="0"
-        title="Native Banner Ad"
-      />
-    </div>
+    <iframe
+      srcDoc={adHTML}
+      style={{
+        width: "100%",
+        minHeight: "0",
+        border: "none",
+        display: "block",
+      }}
+      scrolling="no"
+      frameBorder="0"
+      title="Native Banner Ad"
+    />
   );
 }

@@ -662,7 +662,7 @@ export default function SbtiExperience() {
                   <p>{result.finalType.desc}</p>
                 </div>
 
-                <NativeBanner className={styles.adBox} />
+                <NativeBanner />
 
                 <div className={styles.dimBox}>
                   <h3>{t("result.dimensionsTitle")}</h3>
