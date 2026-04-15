@@ -60,6 +60,20 @@
   padding: 24px 16px 16px;
 }
 
+.pageTest {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.pageTest .shell {
+  display: block;
+}
+
+.pageTest::before {
+  display: none;
+}
+
 .card {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -441,34 +455,64 @@
   padding: 22px;
 }
 
+.testWrap {
+  margin-top: 0;
+  padding-top: 4px;
+  padding-bottom: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 247, 0.98));
+}
+
 .topbar {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 8px 12px 10px;
+  border: 1px solid rgba(214, 228, 217, 0.9);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 251, 248, 0.94));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 14px 28px rgba(47, 73, 55, 0.06);
+  backdrop-filter: blur(10px) saturate(1.02);
+}
+
+.progressHeader {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 18px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .progress {
-  flex: 1;
-  min-width: 240px;
-  height: 12px;
-  background: linear-gradient(135deg, #edf3ee, #e0ede2);
+  width: 100%;
+  height: 14px;
+  padding: 2px;
+  background: linear-gradient(180deg, #e8f0ea, #dce9de);
+  border: 1px solid rgba(214, 228, 217, 0.95);
   border-radius: 999px;
   overflow: hidden;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.88),
+    inset 0 -1px 4px rgba(77, 106, 83, 0.08);
 }
 
 .progressBar {
   display: block;
   width: 0;
   height: 100%;
-  background: linear-gradient(90deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
+  background:
+    linear-gradient(90deg, #6f9477 0%, #84aa8b 46%, #bad4bf 100%);
   border-radius: inherit;
   transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
   overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    0 4px 12px rgba(108, 141, 113, 0.2);
 }
 
 .progressBar::after {
@@ -478,7 +522,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
   animation: shimmer 2s infinite;
 }
 
@@ -493,23 +538,30 @@
 }
 
 .progressText {
-  color: var(--muted);
-  font-size: 13px;
+  color: #4f6456;
+  font-size: 15px;
+  font-weight: 800;
   white-space: nowrap;
 }
 
-.questionList {
+.questionStage {
   display: grid;
-  gap: 16px;
+  align-items: start;
+  margin-top: 0;
+}
+
+.testPanel {
+  padding: 0;
 }
 
 .question {
   border: 2px solid var(--line);
-  border-radius: 20px;
-  padding: 22px;
+  border-radius: 22px;
+  padding: 20px 20px 18px;
   background: linear-gradient(135deg, #ffffff, #fbfdfb);
   animation: rise 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   transition: all 0.3s ease;
+  box-shadow: 0 14px 30px rgba(77, 106, 83, 0.07);
 }
 
 .question:hover {
@@ -523,7 +575,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: var(--muted);
   font-size: 12px;
 }
@@ -543,14 +595,16 @@
 
 .questionTitle {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   white-space: pre-wrap;
 }
 
 .options {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   margin-top: 14px;
 }
 
@@ -558,8 +612,8 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 14px;
-  padding: 16px;
+  gap: 12px;
+  padding: 12px 14px;
   border-radius: 16px;
   border: 2px solid var(--line);
   background: #fff;
@@ -592,14 +646,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  min-width: 36px;
-  height: 36px;
-  border-radius: 12px;
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  border-radius: 10px;
   background: linear-gradient(135deg, var(--soft), #e0ede2);
   color: var(--accent-strong);
   font-weight: 800;
-  font-size: 15px;
+  font-size: 13px;
   transition: all 0.3s ease;
 }
 
@@ -613,11 +667,13 @@
 .optionText {
   color: #304034;
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .actionsBottom {
-  margin-top: 20px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(214, 228, 217, 0.92);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -633,8 +689,17 @@
 
 .actionGroup {
   display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.actionsBottom .btn {
+  padding: 10px 20px;
+  border-radius: 14px;
+  font-size: 14px;
+  min-width: 140px;
 }
 
 .resultLayout {
@@ -1149,6 +1214,30 @@
     padding: 16px;
   }
 
+  .testWrap {
+    margin-top: 0;
+    padding-top: 2px;
+    padding-bottom: 6px;
+  }
+
+  .topbar {
+    padding: 8px 10px 10px;
+    margin-bottom: 4px;
+  }
+
+  .questionStage {
+    margin-top: 0;
+  }
+
+  .testPanel {
+    padding: 0;
+  }
+
+  .question {
+    padding: 16px 16px 14px;
+    border-radius: 18px;
+  }
+
   .posterBox,
   .typeBox {
     padding: 20px;
@@ -1196,10 +1285,15 @@
   }
 
   .questionTitle {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .actionGroup {
+    width: 100%;
+  }
+
+  .actionsBottom .btn {
+    min-width: 0;
     width: 100%;
   }
 

@@ -192,6 +192,8 @@
       "dimensionHidden": "Dimension verborgen",
       "hintComplete": "Alles erledigt. Jetzt kannst du deine digitale Seele auf der Ergebnisseite beurteilen lassen.",
       "hintIncomplete": "Beantworte erst alle Fragen. Die Welt ist chaotisch genug, wenigstens den Test solltest du zu Ende bringen.",
+      "prevButton": "Zurueck",
+      "nextButton": "Weiter",
       "backButton": "Zurueck zur Startseite",
       "submitButton": "Absenden und Ergebnis ansehen"
     },

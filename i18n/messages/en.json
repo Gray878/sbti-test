@@ -192,6 +192,8 @@
       "dimensionHidden": "Dimension Hidden",
       "hintComplete": "All done. Now you can submit your digital soul for judgment on the results page.",
       "hintIncomplete": "Complete all questions to proceed. The world is chaotic enough, at least finish the questions.",
+      "prevButton": "Previous",
+      "nextButton": "Next",
       "backButton": "Back to Home",
       "submitButton": "Submit and View Results"
     },

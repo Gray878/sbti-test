@@ -64,6 +64,7 @@ export default function SbtiExperience() {
   const [screen, setScreen] = useState<Screen>("intro");
   const [answers, setAnswers] = useState<AnswerMap>({});
   const [questionFlow, setQuestionFlow] = useState<SbtiQuestion[]>([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [result, setResult] = useState<ComputedSbtiResult | null>(null);
   const [showShareSheet, setShowShareSheet] = useState(false);
   const [sharePosterUrl, setSharePosterUrl] = useState<string | null>(null);
@@ -132,7 +133,16 @@ export default function SbtiExperience() {
   ).length;
   const totalQuestions = visibleQuestions.length;
   const progress = totalQuestions ? (answeredCount / totalQuestions) * 100 : 0;
-  const canSubmit = totalQuestions > 0 && answeredCount === totalQuestions;
+  const currentQuestion =
+    visibleQuestions[Math.min(currentQuestionIndex, Math.max(totalQuestions - 1, 0))] ??
+    null;
+  const currentQuestionNumber = currentQuestion
+    ? visibleQuestions.findIndex((question) => question.id === currentQuestion.id) + 1
+    : 0;
+  const currentAnswer =
+    currentQuestion ? answers[currentQuestion.id] : undefined;
+  const isFirstQuestion = currentQuestionIndex <= 0;
+  const isLastQuestion = totalQuestions > 0 && currentQuestionIndex === totalQuestions - 1;
   const sharePosterCopy: SbtiPosterCopy = {
     posterTitle: t("result.posterTitle"),
     posterSummaryTitle: t("result.posterSummaryTitle"),
@@ -147,6 +157,16 @@ export default function SbtiExperience() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [screen]);
+
+  useEffect(() => {
+    if (screen !== "test") {
+      return;
+    }
+
+    setCurrentQuestionIndex((current) =>
+      Math.min(current, Math.max(visibleQuestions.length - 1, 0))
+    );
+  }, [screen, visibleQuestions.length]);
 
   useEffect(() => {
     return () => {
@@ -204,6 +224,7 @@ export default function SbtiExperience() {
   function startTest() {
     clearSharePoster();
     setAnswers({});
+    setCurrentQuestionIndex(0);
     setResult(null);
     setQuestionFlow(
       createQuestionFlow(sbtiContent.questions, sbtiContent.specialQuestions)
@@ -213,34 +234,78 @@ export default function SbtiExperience() {
 
   function goHome() {
     clearSharePoster();
+    setCurrentQuestionIndex(0);
     setScreen("intro");
   }
 
-  function handleSelect(questionId: string, value: number) {
-    setAnswers((current) => {
-      const next = { ...current, [questionId]: value };
-
-      if (questionId === "drink_gate_q1" && value !== 3) {
-        delete next.drink_gate_q2;
-      }
-
-      return next;
-    });
-  }
-
-  function handleSubmit() {
-    if (!canSubmit) {
-      return;
-    }
-
+  function showResult(finalAnswers: AnswerMap) {
     clearSharePoster();
     setResult(
-      computeSbtiResult(answers, {
+      computeSbtiResult(finalAnswers, {
         typeLibrary: sbtiContent.typeLibrary,
         copy: resultCopy,
       })
     );
     setScreen("result");
+  }
+
+  function handleSelect(questionId: string, value: number) {
+    const nextAnswers = { ...answers, [questionId]: value };
+
+    if (questionId === "drink_gate_q1" && value !== 3) {
+      delete nextAnswers.drink_gate_q2;
+    }
+
+    const nextVisibleQuestions = getVisibleQuestions(
+      questionFlow,
+      nextAnswers,
+      sbtiContent.specialQuestions
+    );
+    const nextAnsweredCount = nextVisibleQuestions.filter(
+      (question) => nextAnswers[question.id] !== undefined
+    ).length;
+    const answeredQuestionIndex = nextVisibleQuestions.findIndex(
+      (question) => question.id === questionId
+    );
+    const isLastQuestion =
+      answeredQuestionIndex !== -1 &&
+      answeredQuestionIndex === nextVisibleQuestions.length - 1;
+
+    setAnswers(nextAnswers);
+
+    if (
+      isLastQuestion &&
+      nextVisibleQuestions.length > 0 &&
+      nextAnsweredCount === nextVisibleQuestions.length
+    ) {
+      showResult(nextAnswers);
+      return;
+    }
+
+    if (answeredQuestionIndex !== -1) {
+      setCurrentQuestionIndex(
+        Math.min(answeredQuestionIndex + 1, nextVisibleQuestions.length - 1)
+      );
+    }
+  }
+
+  function handlePreviousQuestion() {
+    setCurrentQuestionIndex((current) => Math.max(current - 1, 0));
+  }
+
+  function handleNextQuestion() {
+    if (currentAnswer === undefined) {
+      return;
+    }
+
+    if (isLastQuestion) {
+      showResult(answers);
+      return;
+    }
+
+    setCurrentQuestionIndex((current) =>
+      Math.min(current + 1, Math.max(totalQuestions - 1, 0))
+    );
   }
 
   async function handleOpenShareSheet() {
@@ -315,7 +380,7 @@ export default function SbtiExperience() {
   }
 
   return (
-    <div className={styles.page}>
+    <div className={cn(styles.page, screen === "test" && styles.pageTest)}>
       {screen === "intro" && <StructuredData data={faqData} type="FAQ" />}
 
       <div className={styles.shell}>
@@ -426,97 +491,104 @@ export default function SbtiExperience() {
           <section>
             <div className={cn(styles.card, styles.testWrap)}>
               <div className={styles.topbar}>
+                <div className={styles.progressHeader}>
+                  <div className={styles.progressText}>
+                    {currentQuestionNumber} / {totalQuestions}
+                  </div>
+                </div>
                 <div className={styles.progress}>
                   <span
                     className={styles.progressBar}
                     style={{ width: `${progress}%` }}
                   />
                 </div>
-                <div className={styles.progressText}>
-                  {answeredCount} / {totalQuestions}
-                </div>
               </div>
 
-              <div className={styles.questionList}>
-                {visibleQuestions.map((question, questionIndex) => (
-                  <article
-                    key={question.id}
-                    className={styles.question}
-                    style={{
-                      animationDelay: `${Math.min(questionIndex, 6) * 35}ms`,
-                    }}
-                  >
-                    <div className={styles.questionMeta}>
-                      <div className={styles.badge}>
-                        {t("test.questionNumber", {
-                          number: questionIndex + 1,
+              <div className={styles.testPanel}>
+                {currentQuestion && (
+                  <div className={styles.questionStage}>
+                    <article
+                      key={currentQuestion.id}
+                      className={styles.question}
+                    >
+                      <div className={styles.questionMeta}>
+                        <div className={styles.badge}>
+                          {t("test.questionNumber", {
+                            number: currentQuestionNumber,
+                          })}
+                        </div>
+                        <div>{getQuestionMetaLabel(currentQuestion)}</div>
+                      </div>
+
+                      <p className={styles.questionTitle}>{currentQuestion.text}</p>
+
+                      <div className={styles.options}>
+                        {currentQuestion.options.map((option, optionIndex) => {
+                          const selected =
+                            answers[currentQuestion.id] === option.value;
+
+                          return (
+                            <label
+                              key={`${currentQuestion.id}-${option.value}`}
+                              className={cn(
+                                styles.option,
+                                selected && styles.optionSelected
+                              )}
+                            >
+                              <input
+                                checked={selected}
+                                className={styles.optionInput}
+                                name={currentQuestion.id}
+                                onChange={() =>
+                                  handleSelect(currentQuestion.id, option.value)
+                                }
+                                type="radio"
+                                value={option.value}
+                              />
+                              <span className={styles.optionCode}>
+                                {OPTION_CODES[optionIndex] ?? optionIndex + 1}
+                              </span>
+                              <span className={styles.optionText}>
+                                {option.label}
+                              </span>
+                            </label>
+                          );
                         })}
                       </div>
-                      <div>{getQuestionMetaLabel(question)}</div>
-                    </div>
+                      <div className={styles.actionsBottom}>
+                        <div className={styles.hint}>{t("test.hintIncomplete")}</div>
 
-                    <p className={styles.questionTitle}>{question.text}</p>
-
-                    <div className={styles.options}>
-                      {question.options.map((option, optionIndex) => {
-                        const selected = answers[question.id] === option.value;
-
-                        return (
-                          <label
-                            key={`${question.id}-${option.value}`}
-                            className={cn(
-                              styles.option,
-                              selected && styles.optionSelected
-                            )}
+                        <div className={styles.actionGroup}>
+                          <button
+                            className={cn(styles.btn, styles.btnSecondary)}
+                            disabled={isFirstQuestion}
+                            onClick={handlePreviousQuestion}
+                            type="button"
                           >
-                            <input
-                              checked={selected}
-                              className={styles.optionInput}
-                              name={question.id}
-                              onChange={() =>
-                                handleSelect(question.id, option.value)
-                              }
-                              type="radio"
-                              value={option.value}
-                            />
-                            <span className={styles.optionCode}>
-                              {OPTION_CODES[optionIndex] ?? optionIndex + 1}
-                            </span>
-                            <span className={styles.optionText}>
-                              {option.label}
-                            </span>
-                          </label>
-                        );
-                      })}
-                    </div>
-                  </article>
-                ))}
-              </div>
-
-              <div className={styles.actionsBottom}>
-                <div className={styles.hint}>
-                  {canSubmit
-                    ? t("test.hintComplete")
-                    : t("test.hintIncomplete")}
-                </div>
-
-                <div className={styles.actionGroup}>
-                  <button
-                    className={cn(styles.btn, styles.btnSecondary)}
-                    onClick={goHome}
-                    type="button"
-                  >
-                    {t("test.backButton")}
-                  </button>
-                  <button
-                    className={cn(styles.btn, styles.btnPrimary)}
-                    disabled={!canSubmit}
-                    onClick={handleSubmit}
-                    type="button"
-                  >
-                    {t("test.submitButton")}
-                  </button>
-                </div>
+                            {t("test.prevButton")}
+                          </button>
+                          <button
+                            className={cn(styles.btn, styles.btnPrimary)}
+                            disabled={currentAnswer === undefined}
+                            onClick={handleNextQuestion}
+                            type="button"
+                          >
+                            {isLastQuestion
+                              ? t("test.submitButton")
+                              : t("test.nextButton")}
+                          </button>
+                          <button
+                            className={cn(styles.btn, styles.btnSecondary)}
+                            onClick={goHome}
+                            type="button"
+                          >
+                            {t("test.backButton")}
+                          </button>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                )}
               </div>
             </div>
           </section>

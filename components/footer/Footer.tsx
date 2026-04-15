@@ -8,11 +8,8 @@ export default async function Footer() {
 
   return (
     <footer
-      className="mt-auto w-full border-t border-[#dbe8dd]"
-      style={{
-        background:
-          "radial-gradient(circle at top left, #f8fff8 0, #f6faf6 36%, #f2f7f3 100%)",
-      }}
+      className="mt-auto w-full"
+      style={{ background: "#f6faf6" }}
     >
       <div className="mx-auto flex max-w-[980px] flex-col items-center justify-between gap-2 px-4 py-4 text-sm text-[#4d5c52] md:flex-row">
         <p>{t("Copyright", { year, name: siteConfig.name })}</p>

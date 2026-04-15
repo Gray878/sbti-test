@@ -82,8 +82,9 @@ export default async function LocaleLayout({
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background flex flex-col font-sans antialiased"
+          "min-h-screen flex flex-col font-sans antialiased"
         )}
+        style={{ background: "#f6faf6" }}
       >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
@@ -94,7 +95,10 @@ export default async function LocaleLayout({
             {messages.LanguageDetection && <LanguageDetectionAlert />}
             {messages.Header && <Header />}
 
-            <main className="w-full flex-1 flex flex-col items-center">
+            <main
+              className="w-full flex-1 flex flex-col items-center"
+              style={{ background: "#f6faf6" }}
+            >
               {children}
             </main>
 

@@ -192,6 +192,8 @@
       "dimensionHidden": "维度已隐藏",
       "hintComplete": "都做完了。现在可以把你的电子魂魄交给结果页审判。",
       "hintIncomplete": "全选完才会放行。世界已经够乱了，起码把题做完整。",
+      "prevButton": "上一题",
+      "nextButton": "下一题",
       "backButton": "返回首页",
       "submitButton": "提交并查看结果"
     },

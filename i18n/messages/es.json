@@ -192,6 +192,8 @@
       "dimensionHidden": "Dimensión oculta",
       "hintComplete": "Ya está todo listo. Ahora puedes enviar tu alma digital para que la juzgue la página de resultados.",
       "hintIncomplete": "Completa todas las preguntas para continuar. El mundo ya es bastante caótico; al menos termina el cuestionario.",
+      "prevButton": "Anterior",
+      "nextButton": "Siguiente",
       "backButton": "Volver al inicio",
       "submitButton": "Enviar y ver resultados"
     },
