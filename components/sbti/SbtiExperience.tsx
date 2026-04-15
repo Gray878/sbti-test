@@ -1,8 +1,8 @@
 "use client";
 
+import NativeBanner from "@/components/ads/NativeBanner";
 import StructuredData from "@/components/StructuredData";
 import { Link, Locale } from "@/i18n/routing";
-import { getSbtiContent } from "@/lib/sbti-content";
 import {
   AnswerMap,
   ComputedSbtiResult,
@@ -13,13 +13,13 @@ import {
   getVisibleQuestions,
   sbtiData,
 } from "@/lib/sbti";
+import { getSbtiContent } from "@/lib/sbti-content";
 import { getSbtiTypeHref } from "@/lib/sbti-type-routes";
 import { cn } from "@/lib/utils";
-import Script from "next/script";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
-import SbtiHeroTypeWall from "./SbtiHeroTypeWall";
 import styles from "./SbtiExperience.module.css";
+import SbtiHeroTypeWall from "./SbtiHeroTypeWall";
 import { buildSbtiSharePoster, type SbtiPosterCopy } from "./sharePoster";
 
 type Screen = "intro" | "test" | "result";
@@ -604,7 +604,7 @@ export default function SbtiExperience() {
                     className={cn(
                       styles.posterBox,
                       !sbtiData.typeImages[result.finalType.code] &&
-                        styles.posterBoxNoImage
+                      styles.posterBoxNoImage
                     )}
                   >
                     <div className={styles.posterFrame}>
@@ -662,15 +662,7 @@ export default function SbtiExperience() {
                   <p>{result.finalType.desc}</p>
                 </div>
 
-                <div className={styles.adBox}>
-                  <Script
-                    async
-                    data-cfasync="false"
-                    src="https://pl29160795.profitablecpmratenetwork.com/a14bbb8c8065c94639c6829cdf911920/invoke.js"
-                    strategy="afterInteractive"
-                  />
-                  <div id="container-a14bbb8c8065c94639c6829cdf911920" />
-                </div>
+                <NativeBanner className={styles.adBox} />
 
                 <div className={styles.dimBox}>
                   <h3>{t("result.dimensionsTitle")}</h3>
@@ -690,7 +682,7 @@ export default function SbtiExperience() {
                         <p>
                           {
                             sbtiContent.dimExplanations[dimension][
-                              result.levels[dimension]
+                            result.levels[dimension]
                             ]
                           }
                         </p>
