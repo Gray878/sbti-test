@@ -10,6 +10,7 @@ import {
 } from "@/lib/sbti-type-routes";
 import { Metadata } from "next";
 import Image from "next/image";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 
 type Params = Promise<{ locale: string; type: string }>;
@@ -286,6 +287,11 @@ export default async function SbtiTypePage({
             })}
           </div>
         </section>
+
+        <Script
+          src="https://pl29160796.profitablecpmratenetwork.com/b0/c9/8e/b0c98e1984a6b4e05dfa27504f5bbe84.js"
+          strategy="afterInteractive"
+        />
       </div>
     </div>
   );
