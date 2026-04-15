@@ -15,6 +15,7 @@ import {
 } from "@/lib/sbti";
 import { getSbtiTypeHref } from "@/lib/sbti-type-routes";
 import { cn } from "@/lib/utils";
+import Script from "next/script";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import SbtiHeroTypeWall from "./SbtiHeroTypeWall";
@@ -659,6 +660,16 @@ export default function SbtiExperience() {
                 <div className={styles.analysisBox}>
                   <h3>{t("result.analysisTitle")}</h3>
                   <p>{result.finalType.desc}</p>
+                </div>
+
+                <div className={styles.adBox}>
+                  <Script
+                    async
+                    data-cfasync="false"
+                    src="https://pl29160795.profitablecpmratenetwork.com/a14bbb8c8065c94639c6829cdf911920/invoke.js"
+                    strategy="afterInteractive"
+                  />
+                  <div id="container-a14bbb8c8065c94639c6829cdf911920" />
                 </div>
 
                 <div className={styles.dimBox}>
