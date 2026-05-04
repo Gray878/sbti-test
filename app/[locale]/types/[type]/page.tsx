@@ -1,3 +1,4 @@
+import NativeBanner from "@/components/ads/NativeBanner";
 import { Link, Locale, LOCALES } from "@/i18n/routing";
 import { constructMetadata } from "@/lib/metadata";
 import { sbtiData } from "@/lib/sbti";
@@ -257,6 +258,8 @@ export default async function SbtiTypePage({
             </p>
           </article>
         </section>
+
+        <NativeBanner />
 
         <section className="rounded-[24px] border border-black/10 bg-white p-6 shadow-sm">
           <h2 className="text-xl font-semibold text-neutral-950">

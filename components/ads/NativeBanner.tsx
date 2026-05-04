@@ -31,12 +31,12 @@ export default function NativeBanner({ className = "" }: NativeBannerProps) {
       </style>
     </head>
     <body>
-      <div id="container-a14bbb8c8065c94639c6829cdf911920"></div>
       <script 
         async 
         data-cfasync="false" 
         src="https://pl29160795.profitablecpmratenetwork.com/a14bbb8c8065c94639c6829cdf911920/invoke.js">
       </script>
+      <div id="container-a14bbb8c8065c94639c6829cdf911920"></div>
       <script>
         // 监听广告容器变化
         const checkAdLoaded = () => {
